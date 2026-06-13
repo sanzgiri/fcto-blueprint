@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Free Fractional CTO — 90-Day Blueprint</title>
+<meta name="description" content="A free, self-directed curriculum that mirrors the CTOx attract → convert → serve arc. Track your progress." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fcto-blueprint.netlify.app/" />
+<meta property="og:title" content="The Free Fractional CTO — 90-Day Blueprint" />
+<meta property="og:description" content="A self-directed curriculum that reproduces the CTOx attract → convert → serve arc using only free resources. ~3–5 hrs/week, with a built-in progress tracker." />
+<meta property="og:image" content="https://fcto-blueprint.netlify.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="FCTO Blueprint" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Free Fractional CTO — 90-Day Blueprint" />
+<meta name="twitter:description" content="A self-directed curriculum mirroring CTOx attract → convert → serve, assembled from free resources. With progress tracker." />
+<meta name="twitter:image" content="https://fcto-blueprint.netlify.app/og-image.png" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧭%3C/text%3E%3C/svg%3E" />
+<style>
+  :root{
+    --bg:#0b0d10; --panel:#13171c; --panel2:#181d24; --border:#222831;
+    --text:#e8ecf1; --muted:#8a94a3; --accent:#7cf3a0; --accent2:#6aa9ff;
+    --star:#ffcc55; --done:#3a8c5a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:980px;margin:0 auto;padding:32px 20px 80px}
+  header h1{margin:0 0 6px;font-size:30px;letter-spacing:-.01em}
+  header p.sub{margin:0;color:var(--muted)}
+  .meta{margin-top:14px;color:var(--muted);font-size:13.5px}
+  .legend{margin:18px 0 0;display:flex;gap:8px;flex-wrap:wrap}
+  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:#1d242d;color:#cfd6df;border:1px solid var(--border);text-transform:uppercase;letter-spacing:.05em}
+  .tag.book{background:#2a2032;color:#f0c8ff}
+  .tag.blog{background:#1f2a32;color:#9fdcff}
+  .tag.podcast{background:#2a2520;color:#ffd49a}
+  .tag.video{background:#2a1f1f;color:#ff9a9a}
+  .tag.course{background:#1f2a22;color:#9fffb6}
+  .tag.network{background:#22202a;color:#c9b8ff}
+
+  .progress-wrap{position:sticky;top:0;z-index:10;background:linear-gradient(var(--bg),var(--bg) 70%,transparent);padding:14px 0 10px;margin-bottom:8px}
+  .progress{height:10px;background:#1a1f26;border-radius:999px;overflow:hidden;border:1px solid var(--border)}
+  .progress > div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;transition:width .3s ease}
+  .progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:13px;color:var(--muted)}
+  .progress-row strong{color:var(--text)}
+  .ctrls{display:flex;gap:8px}
+  .btn{background:#1a1f26;color:var(--text);border:1px solid var(--border);padding:5px 10px;border-radius:6px;cursor:pointer;font-size:12px}
+  .btn:hover{background:#222831}
+
+  section.phase{margin:36px 0 0}
+  section.phase > h2{font-size:22px;margin:0 0 4px;letter-spacing:-.01em}
+  section.phase > p.lede{margin:0 0 16px;color:var(--muted)}
+  .week{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:14px 0}
+  .week h3{margin:0 0 4px;font-size:16px}
+  .week p.note{margin:0 0 10px;color:var(--muted);font-size:13.5px}
+  .deliverable{margin-top:8px;padding:10px 12px;background:#101820;border-left:3px solid var(--accent);border-radius:6px;font-size:13.5px}
+  .deliverable b{color:var(--accent)}
+
+  ul.items{list-style:none;margin:0;padding:0}
+  li.item{display:flex;gap:12px;align-items:flex-start;padding:10px 8px;border-radius:8px;border:1px solid transparent;transition:background .15s}
+  li.item:hover{background:#10151b}
+  li.item.done{opacity:.55}
+  li.item.done .title{text-decoration:line-through;text-decoration-color:var(--muted)}
+  li.item input[type=checkbox]{margin-top:4px;width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
+  .body{flex:1;min-width:0}
+  .title{font-weight:500}
+  .star{color:var(--star);margin-right:2px}
+  .desc{color:var(--muted);font-size:13.5px;margin-top:2px}
+  .tagrow{display:inline-flex;gap:6px;margin-right:6px;vertical-align:middle}
+
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+  .outcome{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-top:24px}
+  .outcome h2{margin:0 0 8px;font-size:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>🧭 The Free Fractional CTO — 90-Day Blueprint</h1>
+  <p class="sub">A self-directed curriculum that reproduces the CTOx <em>attract → convert → serve</em> arc using only free resources.</p>
+  <p class="meta">~3–5 hours/week. The <span class="star">⭐</span> items are the non-negotiables. Podcasts are for commutes/workouts; the reading and the two free courses are the spine. Progress is saved in your browser.</p>
+  <p class="meta">📓 <strong>New:</strong> <a href="playbook.html" style="color:var(--accent)">The Fractional CTO Playbook</a> — the long-form companion field manual. Ten chapters on positioning, pricing, attract, convert, and serve, in the spirit of Rands in Repose.</p>
+  <div class="legend">
+    <span class="tag book">Book</span>
+    <span class="tag blog">Blog</span>
+    <span class="tag podcast">Podcast</span>
+    <span class="tag video">Video</span>
+    <span class="tag course">Course</span>
+    <span class="tag network">Network</span>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-row">
+    <div><strong id="done-count">0</strong> / <span id="total-count">0</span> complete · <strong id="star-done">0</strong>/<span id="star-total">0</span> ⭐ done</div>
+    <div class="ctrls">
+      <button class="btn" id="reset-btn" title="Reset all progress">Reset</button>
+    </div>
+  </div>
+  <div class="progress"><div id="bar"></div></div>
+</div>
+
+<!-- ============ DAY 1 ============ -->
+<section class="phase" id="setup">
+  <h2>Set Up in Parallel — Day 1</h2>
+  <p class="lede">Free platforms where the actual work comes from. Create profiles now so you're discoverable while you learn.</p>
+  <div class="week">
+    <ul class="items" id="list-setup"></ul>
+  </div>
+</section>
+
+<!-- ============ PHASE 1 ============ -->
+<section class="phase" id="phase1">
+  <h2>Phase 1 — Calibrate & Position (Days 1–30)</h2>
+  <p class="lede">CTOx pillar: the "pro mindset" + define your opportunity. <em>Who do I serve, what do I sell, why me?</em></p>
+
+  <div class="week">
+    <h3>Week 1–2: The mindset shift (employee → operator)</h3>
+    <ul class="items" id="list-p1w1"></ul>
+  </div>
+
+  <div class="week">
+    <h3>Week 2–3: Understand the fractional model</h3>
+    <ul class="items" id="list-p1w2"></ul>
+  </div>
+
+  <div class="week">
+    <h3>Week 3–4: Define your wedge</h3>
+    <ul class="items" id="list-p1w3"></ul>
+    <div class="deliverable"><b>Deliverable:</b> Write your one-line positioning — "I help [who] do [what] so they [outcome]." Draft both an AI-specialist variant and a general-FCTO variant; pick one to lead with.</div>
+  </div>
+</section>
+
+<!-- ============ PHASE 2 ============ -->
+<section class="phase" id="phase2">
+  <h2>Phase 2 — Package & Attract (Days 31–60)</h2>
+  <p class="lede">CTOx pillars: <em>attract + the front half of convert</em>. Turn expertise into an offer CEOs understand. Build credibility before you ever ask for a sale.</p>
+
+  <div class="week">
+    <h3>Week 5–6: Design your offer and pricing</h3>
+    <ul class="items" id="list-p2w1"></ul>
+    <div class="deliverable"><b>Deliverable:</b> Draft a 2–3 tier service menu (advisory / fractional / interim) with value-anchored pricing.</div>
+  </div>
+
+  <div class="week">
+    <h3>Week 6–7: Build the credibility engine</h3>
+    <ul class="items" id="list-p2w2"></ul>
+    <div class="deliverable"><b>Deliverable:</b> Publish 2 short LinkedIn posts or one teardown-style piece. Start building the public track record now while you still have the Microsoft title.</div>
+  </div>
+
+  <div class="week">
+    <h3>Week 7–8: Activate the network</h3>
+    <ul class="items" id="list-p2w3"></ul>
+    <div class="deliverable"><b>Deliverable:</b> List 30 warm contacts (IIT Bombay alumni, Microsoft AI alumni who've gone to startups, PNW VC contacts). Begin 5 reconnect conversations/week — no pitch, just reconnecting and listening.</div>
+  </div>
+</section>
+
+<!-- ============ PHASE 3 ============ -->
+<section class="phase" id="phase3">
+  <h2>Phase 3 — Convert & Serve (Days 61–90)</h2>
+  <p class="lede">CTOx pillars: <em>convert + serve</em>. Turn conversations into signed retainers, then deliver in a way that renews.</p>
+
+  <div class="week">
+    <h3>Week 9–10: Sales conversations and proposals</h3>
+    <ul class="items" id="list-p3w1"></ul>
+    <div class="deliverable"><b>Deliverable:</b> Write a reusable one-page proposal template and a simple MSA/SOW outline. Run your first 2–3 real discovery calls.</div>
+  </div>
+
+  <div class="week">
+    <h3>Week 10–11: Delivery frameworks (so the first engagement renews)</h3>
+    <ul class="items" id="list-p3w2"></ul>
+    <div class="deliverable"><b>Deliverable:</b> Build your "first 30 days of an engagement" playbook — the audit, the quick win, the roadmap.</div>
+  </div>
+
+  <div class="week">
+    <h3>Week 11–12: Show ROI and set up renewal</h3>
+    <ul class="items" id="list-p3w3"></ul>
+    <div class="deliverable"><b>Deliverable:</b> Build a simple one-page ROI/impact template you'll present at the end of every engagement to justify renewal and rate increases.</div>
+  </div>
+</section>
+
+<!-- ============ BONUS ============ -->
+<section class="phase" id="bonus">
+  <h2>Bonus Track — Your AI Differentiator</h2>
+  <p class="lede">Optional, in parallel. Free resources to sharpen the "AI Fractional CTO" wedge that sets you apart from generalists.</p>
+  <div class="week">
+    <ul class="items" id="list-bonus"></ul>
+    <div class="deliverable"><b>Deliverable:</b> A short "AI build vs buy" decision framework you can run as a paid workshop — a natural foot-in-the-door offer.</div>
+  </div>
+</section>
+
+<div class="outcome">
+  <h2>The 90-Day Outcome</h2>
+  <p>By Day 90 you should have: a written positioning and service menu, value-based pricing you can defend, a small body of published content, 30+ warm contacts re-engaged with 10+ real conversations, profiles live on Bolster and Go Fractional, a reusable proposal + delivery + ROI playbook, and ideally 1–2 discovery calls converting toward a first pilot. That's the same finish line CTOx sells — assembled for the cost of your time.</p>
+</div>
+
+<footer>
+  Built as a free companion to the CTOx 90-Day Blueprint. All resources link to the original authors / publishers. Progress is stored locally in your browser via <code>localStorage</code> — clearing site data resets it.
+</footer>
+
+</div>
+
+<script>
+// ============== CURRICULUM DATA ==============
+// id must be stable — used as localStorage key.
+const data = {
+  setup: [
+    { id:"s1", star:true, tag:"network", title:"Bolster", url:"https://bolster.com",
+      desc:"Largest fractional-exec marketplace, free to apply. Build the profile; study how top fractional CTO profiles are written." },
+    { id:"s2", tag:"network", title:"Go Fractional", url:"https://gofractional.com",
+      desc:"Free to apply." },
+    { id:"s3", tag:"network", title:"Fractional Jobs", url:"https://fractionaljobs.io",
+      desc:"Curated, free to apply." },
+    { id:"s4", star:true, tag:"course", title:"CTOx free \"90-Day Blueprint\" training", url:"https://go.ctox.com/join/1/learn",
+      desc:"Watch once as the template you're mimicking. Take notes on their framework, then build the free version. It's a lead magnet, so expect a pitch." },
+    { id:"s5", tag:"course", title:"CTO Academy — Fractional CTO Playbook", url:"https://cto.academy/",
+      desc:"Free PDF download." }
+  ],
+
+  p1w1: [
+    { id:"p1w1a", star:true, tag:"course", title:"YC Startup School (self-paced)", url:"https://www.startupschool.org/",
+      desc:"~7 weeks, 1–2 hrs/wk. Fixes the single biggest gap for a big-co leader: how seed-to-Series-A founders actually think, decide, and run. Run as a background track across all 90 days." },
+    { id:"p1w1b", star:true, tag:"blog", title:"patio11 — \"Don't Call Yourself a Programmer\"", url:"https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/",
+      desc:"The canonical essay on repositioning technical skill as business value. Also read his consulting/freelancing essays on the same site." },
+    { id:"p1w1c", tag:"podcast", title:"The Business of Authority (Stark & Moulton)", url:"https://businessofauthority.com/",
+      desc:"On positioning yourself as a recognized expert vs. a generalist for hire. Start with early \"specialization\" episodes." }
+  ],
+
+  p1w2: [
+    { id:"p1w2a", tag:"blog", title:"Go Fractional — \"What is a fractional CTO\" guide", url:"https://www.gofractional.com/articles",
+      desc:"Services, costs, engagement shapes." },
+    { id:"p1w2b", tag:"blog", title:"The CTO Club", url:"https://thectoclub.com/",
+      desc:"Free account unlocks fractional CTO role guides, rate data, and a peer community." },
+    { id:"p1w2c", star:true, tag:"podcast", title:"Engineering Leadership Podcast (ELC)", url:"https://sfelc.com/podcast",
+      desc:"Especially episodes with eng leaders who went independent/founder. Tune for the leap stories." }
+  ],
+
+  p1w3: [
+    { id:"p1w3a", star:true, tag:"blog", title:"Will Larson — lethain.com", url:"https://lethain.com/",
+      desc:"Read his pieces on engineering strategy and the staff-plus/leadership archetypes. Use them to articulate what kind of technical leader you are." },
+    { id:"p1w3b", star:true, tag:"book", title:"Staff Engineer — Will Larson (free online)", url:"https://staffeng.com/book",
+      desc:"Free to read in full. Mine it for how to describe senior technical scope in business terms." }
+  ],
+
+  p2w1: [
+    { id:"p2w1a", star:true, tag:"podcast", title:"Ditch Hourly (Jonathan Stark)", url:"https://jonathanstark.com/podcast",
+      desc:"Short episodes; the whole show is about pricing on value, not hours. The mindset that lets you charge $15–30k/mo instead of an hourly rate." },
+    { id:"p2w1b", star:true, tag:"blog", title:"Jonathan Stark — \"Hourly Billing Is Nuts\"", url:"https://jonathanstark.com/hbin",
+      desc:"Free book + articles on value-based pricing and productized consulting." },
+    { id:"p2w1c", tag:"video", title:"Rob Fitzpatrick — \"The Mom Test\" talk", url:"https://www.youtube.com/watch?v=1F2HfYHTGsg",
+      desc:"How to run discovery conversations that surface what clients will actually pay for, without leading them. Watch before you design your \"menu.\"" }
+  ],
+
+  p2w2: [
+    { id:"p2w2a", star:true, tag:"blog", title:"First Round Review", url:"https://review.firstround.com/",
+      desc:"Free, book-quality essays on leadership, hiring, and scaling. Model your own writing voice on these." },
+    { id:"p2w2b", tag:"blog", title:"The Pragmatic Engineer (Gergely Orosz)", url:"https://blog.pragmaticengineer.com/",
+      desc:"Many free posts on eng org design, comp, and the industry. Good source material for your own content." },
+    { id:"p2w2c", tag:"blog", title:"Charity Majors — charity.wtf", url:"https://charity.wtf/",
+      desc:"Sharp writing on the eng-leadership/operations boundary; great for forming opinions you can publish." }
+  ],
+
+  p2w3: [
+    { id:"p2w3a", tag:"course", title:"YC — \"How to Get Users and Grow\" (Gustaf Alström)", url:"https://www.youtube.com/watch?v=tP4rmBHu_d4",
+      desc:"Reframe BD as systematic outreach, not cold spam." },
+    { id:"p2w3b", star:true, tag:"podcast", title:"Lenny's Podcast (Lenny Rachitsky)", url:"https://www.lennyspodcast.com/",
+      desc:"Episodes on personal brand, audience-building, and going independent. Pair with his free newsletter posts." }
+  ],
+
+  p3w1: [
+    { id:"p3w1a", star:true, tag:"course", title:"YC — \"Sales from $0 to $1M\" (Tyler Bosmeny)", url:"https://www.youtube.com/watch?v=4O5UMWaXqsU",
+      desc:"Founder-grade sales for people who hate selling. Directly applicable to landing your first clients." },
+    { id:"p3w1b", tag:"video", title:"YC — \"CTO Advice\" (Jared Friedman)", url:"https://www.youtube.com/watch?v=ZoL0LoP8 alpha".replace(/ alpha$/,""),
+      desc:"How founders evaluate technical leaders; useful for anticipating what they probe for." },
+    { id:"p3w1c", tag:"blog", title:"Jonathan Stark — proposals & \"the close\"", url:"https://jonathanstark.com/articles",
+      desc:"How to structure a proposal around a roadmap, not a task list." }
+  ],
+
+  p3w2: [
+    { id:"p3w2a", star:true, tag:"book", title:"High Growth Handbook — Elad Gil (free online)", url:"https://growth.eladgil.com/",
+      desc:"The reference for scaling orgs, hiring execs, and board dynamics at exactly the stage your clients are at." },
+    { id:"p3w2b", tag:"podcast", title:"Alphalist.CTO (Tobias Schlottke)", url:"https://alphalist.com/podcast",
+      desc:"Deep CTO interviews on scaling teams, architecture, and AI; use for delivery patterns at small scale." },
+    { id:"p3w2c", tag:"podcast", title:"CTO Confessions (TC Gill / IT Labs)", url:"https://itlabs.io/cto-confessions/",
+      desc:"Real-world CTO problems and how leaders handled them." }
+  ],
+
+  p3w3: [
+    { id:"p3w3a", tag:"blog", title:"7CTOs blog", url:"https://7ctos.com/blog/",
+      desc:"Free articles on financial acumen, budgeting, and showing ROI to non-technical CEOs. Read the financial-acumen pieces." },
+    { id:"p3w3b", tag:"podcast", title:"Behind the Tech with Kevin Scott", url:"https://www.microsoft.com/en-us/behind-the-tech",
+      desc:"Free; strategic/AI vantage that reinforces your differentiator and gives you talking points with clients." }
+  ],
+
+  bonus: [
+    { id:"b1", tag:"podcast", title:"Latent Space", url:"https://www.latent.space/",
+      desc:"The engineer's AI podcast; build-vs-buy, RAG, agents, eval — exactly the decisions startups will hire you to make." },
+    { id:"b2", tag:"blog", title:"a16z — AI essays", url:"https://a16z.com/ai/",
+      desc:"Free essays on AI strategy and the enterprise AI stack; good for shaping client-facing POVs." },
+    { id:"b3", tag:"blog", title:"The Pragmatic Engineer — AI coverage", url:"https://newsletter.pragmaticengineer.com/t/ai",
+      desc:"Free posts on how real teams are adopting AI tooling." }
+  ]
+};
+
+// Fix one URL constructed weirdly above
+data.p3w1[1].url = "https://www.youtube.com/results?search_query=jared+friedman+cto+advice+yc";
+
+// ============== RENDER ==============
+const STORAGE_KEY = "ctox-blueprint-v1";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch(e){ state = {}; }
+
+function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); updateProgress(); }
+
+function render(listId, items){
+  const ul = document.getElementById(listId);
+  ul.innerHTML = items.map(it => {
+    const checked = state[it.id] ? "checked" : "";
+    const doneCls = state[it.id] ? "done" : "";
+    return `
+      <li class="item ${doneCls}" data-id="${it.id}">
+        <input type="checkbox" id="cb-${it.id}" ${checked} />
+        <div class="body">
+          <label for="cb-${it.id}" class="title">
+            <span class="tagrow"><span class="tag ${it.tag}">${it.tag}</span></span>
+            ${it.star ? '<span class="star" title="Non-negotiable">⭐</span>' : ''}
+            <a href="${it.url}" target="_blank" rel="noopener">${it.title}</a>
+          </label>
+          <div class="desc">${it.desc}</div>
+        </div>
+      </li>`;
+  }).join("");
+  ul.querySelectorAll('input[type=checkbox]').forEach(cb => {
+    cb.addEventListener('change', e => {
+      const li = cb.closest('li');
+      const id = li.dataset.id;
+      if(cb.checked){ state[id] = true; li.classList.add('done'); }
+      else { delete state[id]; li.classList.remove('done'); }
+      save();
+    });
+  });
+}
+
+function allItems(){
+  return Object.values(data).flat();
+}
+
+function updateProgress(){
+  const all = allItems();
+  const total = all.length;
+  const done = all.filter(it => state[it.id]).length;
+  const stars = all.filter(it => it.star);
+  const starsDone = stars.filter(it => state[it.id]).length;
+  document.getElementById('done-count').textContent = done;
+  document.getElementById('total-count').textContent = total;
+  document.getElementById('star-done').textContent = starsDone;
+  document.getElementById('star-total').textContent = stars.length;
+  document.getElementById('bar').style.width = (total ? (done/total*100) : 0) + '%';
+}
+
+// Render all lists
+Object.keys(data).forEach(k => render('list-' + k, data[k]));
+updateProgress();
+
+document.getElementById('reset-btn').addEventListener('click', () => {
+  if(!confirm('Reset all progress?')) return;
+  state = {};
+  localStorage.removeItem(STORAGE_KEY);
+  Object.keys(data).forEach(k => render('list-' + k, data[k]));
+  updateProgress();
+});
+</script>
+</body>
+</html>

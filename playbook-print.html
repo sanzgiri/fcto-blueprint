@@ -1,0 +1,1322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Fractional CTO Playbook — A Field Manual</title>
+<meta name="description" content="A long-form, rands-in-repose-style field manual on becoming a fractional CTO. Built as the deep companion to the 90-Day Blueprint, distilled from the CTOx framework, podcast, testimonials, Q&A with Lior, and the best free material on the open web." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📓%3C/text%3E%3C/svg%3E" />
+<style>
+  :root{
+    --bg:#ffffff; --panel:#f6f4ef; --panel2:#efece5; --border:#d9d4c8;
+    --text:#1a1a1a; --muted:#5b6068; --accent:#0a7a3e; --accent2:#1d4ed8;
+    --quote:#8a6d1f; --warn:#a02525; --code:#7a2480;
+  }
+
+  @page{
+    size: A4;
+    margin: 22mm 20mm 24mm 20mm;
+    @bottom-right{
+      content: counter(page);
+      color: #5b6068;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+      font-size: 10pt;
+    }
+    @bottom-left{
+      content: "The Fractional CTO Playbook";
+      color: #5b6068;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+      font-size: 10pt;
+      font-style: italic;
+    }
+  }
+  @page :first{
+    margin: 0;
+    @bottom-right{ content: ""; }
+    @bottom-left{ content: ""; }
+  }
+  @page cover{
+    margin: 0;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);
+    font:11.5pt/1.55 Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", serif;}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:none;margin:0;padding:0}
+  /* ---- COVER PAGE ---- */
+  header.top{
+    page: cover;
+    page-break-after: always;
+    height: 297mm;
+    width: 100%;
+    padding: 60mm 28mm 28mm 28mm;
+    background: linear-gradient(160deg, #0b1f17 0%, #0b0d10 60%, #08120c 100%);
+    color: #e8ecf1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  header.top h1{margin:0 0 14px;font-size:46pt;letter-spacing:-.015em;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;line-height:1.1;color:#fff;font-weight:700}
+  header.top p.sub{margin:0;color:#9fdcff;font-style:italic;font-size:16pt;line-height:1.4;max-width:140mm;font-family:Georgia, serif}
+  header.top p.byline{margin-top:0;color:#8a94a3;font-size:10.5pt;border-top:1px solid #222831;padding-top:16px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;line-height:1.55}
+  header.top .cover-top{flex: 0 0 auto}
+  header.top .cover-bottom{flex: 0 0 auto}
+  header.top .cover-meta{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;color:#7cf3a0;font-size:10pt;letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px;font-weight:600}
+  header.top .cover-author{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;color:#cfd6df;font-size:12pt;margin-top:14px;letter-spacing:.04em}
+  /* ---- TOC ---- */
+  nav.toc{background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:22pt 26pt;margin:0 0 0 0;page-break-after:always;page-break-inside:avoid}
+  nav.toc h2{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;font-size:11pt;letter-spacing:.18em;color:var(--muted);margin:0 0 14pt;text-transform:uppercase;font-weight:600}
+  nav.toc ol{margin:0;padding-left:24pt;counter-reset:none}
+  nav.toc li{margin:8pt 0;font-size:12pt;line-height:1.4}
+  nav.toc a{color:var(--text);text-decoration:none}
+  nav.toc a:hover{text-decoration:none}
+
+  /* ---- CHAPTERS ---- */
+  section{page-break-before:always}
+  section#appendix{page-break-before:always}
+  h2.chapter{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
+    font-size:10pt;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin:0 0 6pt;font-weight:600}
+  h3.title{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
+    font-size:26pt;letter-spacing:-.015em;margin:0 0 8pt;line-height:1.15;font-weight:700;color:#0a0a0a}
+  p.lede{color:var(--muted);font-style:italic;margin:0 0 22pt;font-size:12.5pt;line-height:1.4;border-bottom:1px solid var(--border);padding-bottom:18pt}
+
+  h4{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;font-size:15pt;margin:24pt 0 8pt;letter-spacing:-.005em;color:#0a0a0a;font-weight:700;page-break-after:avoid}
+  h5{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;font-size:11pt;margin:18pt 0 6pt;color:#3a3a3a;letter-spacing:.04em;text-transform:uppercase;font-weight:700;page-break-after:avoid}
+
+  p{margin:0 0 11pt;orphans:3;widows:3}
+  em{color:#1a1a1a}
+  strong{color:#000}
+  ul,ol{padding-left:22pt;margin:0 0 12pt}
+  li{margin:4pt 0}
+  a{color:var(--accent2);text-decoration:none}
+
+  blockquote{border-left:3pt solid var(--quote);margin:16pt 0;padding:6pt 16pt;color:#3a2f12;font-style:italic;background:#fbf6e8;border-radius:0 4pt 4pt 0;page-break-inside:avoid;font-size:11pt;line-height:1.5}
+  blockquote cite{display:block;margin-top:6pt;color:var(--muted);font-style:normal;font-size:9.5pt;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+  blockquote cite:before{content:"— "}
+
+  .callout{background:var(--panel);border:1px solid var(--border);border-left:4pt solid var(--accent);
+    padding:11pt 14pt;border-radius:0 4pt 4pt 0;margin:14pt 0;font-size:10.5pt;line-height:1.5;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;page-break-inside:avoid;color:#1a1a1a}
+  .callout.warn{border-left-color:var(--warn);background:#fbf0f0;color:#3a0e0e}
+  .callout.move{border-left-color:var(--accent2);background:#eef3fb}
+  .callout .label{display:inline-block;font-size:8.5pt;letter-spacing:.16em;color:#fff;text-transform:uppercase;font-weight:700;margin-right:6pt;padding:2pt 6pt;background:var(--accent);border-radius:2pt;vertical-align:1pt}
+  .callout.warn .label{color:#fff;background:var(--warn)}
+  .callout.move .label{color:#fff;background:var(--accent2)}
+
+  table{width:100%;border-collapse:collapse;margin:14pt 0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;font-size:9.5pt;page-break-inside:avoid;line-height:1.4}
+  th,td{border:0.5pt solid var(--border);padding:7pt 9pt;text-align:left;vertical-align:top}
+  th{background:#1a1a1a;color:#fff;font-weight:600;letter-spacing:.02em;font-size:9pt}
+  tr:nth-child(even) td{background:#faf8f2}
+  td code{color:var(--code);font-size:9pt}
+
+  .script{background:var(--panel2);border:1px solid var(--border);border-radius:4pt;padding:12pt 14pt;margin:14pt 0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;font-size:10pt;line-height:1.5;page-break-inside:avoid}
+  .script .turn{margin:4pt 0}
+  .script .who{color:var(--accent);font-weight:700;display:inline-block;min-width:54pt}
+  .script .who.them{color:var(--accent2)}
+
+  pre{background:#f4f0e6;border:1px solid var(--border);border-radius:4pt;padding:11pt 13pt;overflow:hidden;font-size:8.5pt;line-height:1.45;color:#1a1a1a;page-break-inside:avoid;white-space:pre-wrap}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace}
+
+  hr.divider{display:none}
+
+  .pull{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;font-size:17pt;line-height:1.35;color:#0a0a0a;border-top:1pt solid var(--border);border-bottom:1pt solid var(--border);padding:14pt 0;margin:20pt 0 8pt;font-style:italic;page-break-inside:avoid;font-weight:500}
+  .end{margin:0 0 14pt;color:var(--muted);font-size:9.5pt;text-align:right;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+
+  footer.foot{margin-top:28pt;padding-top:16pt;border-top:1pt solid var(--border);color:var(--muted);font-size:10pt;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;page-break-inside:avoid}
+  footer.foot a{color:var(--accent2)}
+
+  .sources{background:var(--panel);border:1px solid var(--border);border-radius:4pt;padding:14pt 18pt;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;font-size:10pt;page-break-inside:avoid;margin-top:28pt}
+  .sources h4{margin-top:0;font-size:13pt}
+  .sources ul{padding-left:18pt}
+  .sources li{margin:4pt 0;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="cover-top">
+    <div class="cover-meta">A Field Manual · v1.0</div>
+    <h1>The Fractional CTO Playbook</h1>
+    <p class="sub">A field manual for the technical leader who already knows they're done, but hasn't told anyone yet.</p>
+  </div>
+  <div class="cover-bottom">
+    <p class="byline">A long-form companion to the 90-Day Blueprint. Distilled from the CTOx framework, the CTOx Podcast, the Q&amp;A with Lior on marketing, the testimonials from 250+ practicing fractional CTOs, and a decade of operator essays from Will Larson, Patrick McKenzie, Jonathan Stark, Elad Gil, and the rest of the canon you should have already been reading.</p>
+    <p class="cover-author">Ten chapters · One appendix · Built to be read straight through, then kept on the desk.</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <h2>The Ten Chapters</h2>
+  <ol>
+    <li><a href="#ch1">The Quiet Recognition</a> — why you're reading this</li>
+    <li><a href="#ch2">The Four Freedoms</a> — what you're actually solving for</li>
+    <li><a href="#ch3">The Co-Pilot</a> — what the role actually is</li>
+    <li><a href="#ch4">The Wedge</a> — positioning that converts</li>
+    <li><a href="#ch5">The Offer</a> — Engage, Advisor, Workshop, and how to price them</li>
+    <li><a href="#ch6">The Attract Engine</a> — how clients find you before you find them</li>
+    <li><a href="#ch7">The Conversion Conversation</a> — discovery, proposal, close</li>
+    <li><a href="#ch8">The First 30 Days</a> — Derisk, Unclog, Scale</li>
+    <li><a href="#ch9">The Renewal</a> — ROI scoreboard and rate increases</li>
+    <li><a href="#ch10">The Pro Mindset</a> — what separates the practitioner from the dabbler</li>
+  </ol>
+</nav>
+
+<!-- ============================== CHAPTER 1 ============================== -->
+<section id="ch1">
+<h2 class="chapter">Chapter 1</h2>
+<h3 class="title">The Quiet Recognition</h3>
+<p class="lede">Why you're already reading this on a Tuesday at 11:47 PM.</p>
+
+<p>You closed the laptop at 6 PM. You did. Then you opened it again at 9 because there was that one Slack thread that wouldn't stop. Then you closed it again. Then your spouse went to bed, and you opened it once more — not for work this time. For this. A search. <em>How to become a fractional CTO.</em> Or maybe just <em>fractional CTO salary</em>. Or, if you're further along than you want to admit, you typed <em>how to leave Microsoft</em> and then deleted it and typed it again.</p>
+
+<p>I know this because I've watched it happen to hundreds of senior technologists, and because the inbound at CTOx skews to one specific kind of person sending one specific kind of message at one specific hour of the night. The message is rarely <em>I hate my job</em>. The message is almost always something quieter than that. It is something more like: <em>The work I'm being asked to do is no longer the most interesting use of what I know.</em></p>
+
+<p>Carl Jung had a phrase for the gap between the life you're living and the life you're capable of: <strong>the unlived life</strong>. It's a heavy phrase. I'd skip it except for one thing — it's exactly the right diagnosis. You are not in crisis. You are not burnt out, not really, not the way the Reddit posts use the word. You are something more annoying than burnt out, which is: you are <em>under-deployed</em>. The same brain that can architect a multi-region failover is currently spending Tuesday mornings translating an exec's bad opinion into a roadmap that will be rewritten in six weeks anyway, and somewhere in the back of your skull a calculation is running on a loop.</p>
+
+<p>The calculation is: <em>What if I pointed this at three companies instead of one?</em></p>
+
+<div class="callout">
+<span class="label">The Tell</span>
+You don't need this guide if you're miserable. Miserable people quit. You need this guide if you're successful, well-compensated, and quietly suspicious that the next ten years of your current trajectory are going to deliver less than the last ten did. That suspicion is correct.
+</div>
+
+<h4>Three things this guide is not</h4>
+<p>Before we go further, three quick disclosures, because I have read too many guides that pretended to be one thing and were secretly another.</p>
+
+<p><strong>This is not a manifesto.</strong> The CTOx site has a beautiful manifesto, and you should read it once. But a manifesto is a poster. A poster gets you nodding. This is a field manual. A field manual gets you out of a hole at 2 AM on a Wednesday when a client's investor is asking pointed questions about a vendor decision you made eleven days ago. We will spend our time on the field manual.</p>
+
+<p><strong>This is not a course.</strong> CTOx runs a paid Accelerator, and based on the testimonials — which I have read, all of them, and which I quote later — it works. People with decades of experience say it gave them a "four-to-five year head start." David Shake said exactly that. Gav M. built a five-hundred-thousand-dollar consulting business in months and took his website down because he was getting too many leads. The Accelerator works because the cohort, the coaches, and the accountability collapse the timeline. What you're reading does not replace that. What you're reading is the publicly-available, self-directed version of the same arc, written for the kind of person who needs to see the whole map before they buy the ticket.</p>
+
+<p><strong>This is not optimism.</strong> Most people who consider going fractional don't. Most of those who do, do it too late and from a place of desperation, which — as you'll see in Chapter 10 — is the single highest-leverage way to make every other decision in this guide worse. You should expect this to be harder than your current job for the first 180 days, and easier than your current job forever after.</p>
+
+<h4>The two readers I'm writing to</h4>
+
+<p>I have two people in my head as I write this. If you're one of them, this guide will pay back the time it takes to read. If you're neither, save yourself the evening.</p>
+
+<p><strong>Reader One</strong> is the VP of Engineering or Director-or-above at a name-brand company. You manage somewhere between 15 and 150 humans. You have shipped real things at real scale. You are paid well, your equity has either vested or never will, and you have done some version of this job at some version of this scale at two or more companies. You have run a budget. You have hired and fired. You have testified, more or less politely, in a board meeting. You do not need to be convinced that you are senior; you need to be convinced that what you know is portable.</p>
+
+<p><strong>Reader Two</strong> is the former founder or current CTO of a venture-backed company that didn't quite work, or worked just enough that you got to the next thing and the next thing was an acquisition or a wind-down. You have the technical depth and the founder scars. You are circling the question of what comes next, and "another full-time CTO role" sounds less like a promotion and more like a recurring nightmare.</p>
+
+<p>If you are either of those two people, the market for what you know is, at this exact moment, the best it has been in a generation. We'll get to why in Chapter 3. First, let's get clear on what you actually want.</p>
+
+<hr class="divider" />
+</section>
+
+<!-- ============================== CHAPTER 2 ============================== -->
+<section id="ch2">
+<h2 class="chapter">Chapter 2</h2>
+<h3 class="title">The Four Freedoms</h3>
+<p class="lede">If you do not know what you're solving for, the market will gladly solve for you.</p>
+
+<p>I want to start with a model I did not invent, because it is the single most useful diagnostic I know for the question <em>should I do this</em>, and because it is the model CTOx leads with for exactly this reason. Lior Weinstein calls it the Four Freedoms framework. I'll walk you through it the way I'd walk you through it on a call.</p>
+
+<p>The model: most senior technologists pick their next move by optimizing for one of two variables — title or salary — and then are surprised, two years later, that they are unhappy. The error is that title and salary are <em>proxies</em>. They are noisy, lagging proxies for the underlying things you actually want. The underlying things are four:</p>
+
+<table>
+<thead>
+<tr><th>Freedom</th><th>What it actually means</th><th>The honest question</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Money</strong></td><td>Not income. Self-determination. The ability to set your own ceiling, build wealth on your terms, and decline work that is not worth the price.</td><td>If your current employer doubled your comp tomorrow, would the discontent go away? If yes, keep your job and negotiate. If no, the problem is not money.</td></tr>
+<tr><td><strong>Time</strong></td><td>Not less work. <em>Chosen</em> work. The right to put a Tuesday morning into a deep technical problem and a Thursday afternoon into your daughter's school play, and not negotiate either with a calendar tool.</td><td>If your time was 100% in your control next quarter, what would you actually do with it? If you cannot answer, the problem is not time.</td></tr>
+<tr><td><strong>Relationships</strong></td><td>The right to fire your clients. The right to refuse to work with people whose values you find tedious. The right to pick the room.</td><td>Who, on your current team, would you stop working with tomorrow if you had no consequences? That answer is data.</td></tr>
+<tr><td><strong>Purpose</strong></td><td>The right to do work whose existence you can defend on a Sunday night. The right to refuse to ship things you think are stupid.</td><td>When someone asks what you do, do you describe a job or a mission? The gap between the two is the size of the problem.</td></tr>
+</tbody>
+</table>
+
+<p>The insight is mechanical: <strong>when you optimize for Relationships and Purpose, Money and Time fall into place. When you optimize for Money and Time directly, Relationships and Purpose almost never do.</strong> This is not idealism; it's pricing theory. The price you can command is set by the rarity and impact of the work, and the rarity and impact of the work are downstream of <em>who</em> you choose to do it with and <em>why</em>.</p>
+
+<div class="callout move">
+<span class="label">Move</span>
+Tonight, before bed, write the Four Freedoms on a sheet of paper. Score yourself today, 1 to 10, on each. Then score yourself on each as you imagine yourself five years from now in your current trajectory. If any of the four are worse, you have your answer. If three of the four are worse, you have your urgency.
+</div>
+
+<h4>The cash confidence question</h4>
+
+<p>There is a sequencing question that the framework does not, by itself, answer: <em>when</em>. The CTOx Podcast has an entire episode on this — "How to Go Fractional From Strength, Not Desperation" — and the framing is worth stealing whole.</p>
+
+<p>Two kinds of confidence:</p>
+
+<ul>
+  <li><strong>Cash confidence</strong> — money in the bank. Specifically, enough runway that if it took you 9 to 12 months to get to a full book of clients, you would not have to make a single decision out of fear during those 9 to 12 months.</li>
+  <li><strong>Income confidence</strong> — proof that you can replace your salary from sources you control. Proof comes from real conversations, real proposals, real signed retainers.</li>
+</ul>
+
+<p>You need cash confidence <em>before</em> you have income confidence. This is the inversion that bites people. They wait until the layoff or the PIP or the bad review, at which point they have lost cash confidence at the exact moment they are trying to build income confidence — and now every discovery call has the faint smell of desperation, which clients can read at fifty paces.</p>
+
+<p>The right time to start is when you don't need to. When you still have the title, the badge, the network access, the W2 income, and the slow Tuesdays. The wrong time to start is the week after you don't have any of those things.</p>
+
+<blockquote>
+"The best time to go fractional is while you still have income and financial stability, not after a layoff or burnout. Desperation distorts your decision-making and causes you to accept bad clients, poor terms, and work you do not actually want."
+<cite>The CTOx Podcast, "How to Go Fractional From Strength, Not Desperation"</cite>
+</blockquote>
+
+<h4>The conversation at the kitchen table</h4>
+
+<p>One more thing, and I include it because I have personally watched it derail more transitions than any market dynamic. Before you have a single discovery call with a single prospect, you need to have a specific conversation with your spouse or partner — assuming you have one — and you need to have it well.</p>
+
+<p>The reason this conversation is hard is that <em>you</em> have been quietly turning this over for months. You have a worldview. You have done the math. You have read the Bolster profiles. Your partner has not. To them, this is news. And when humans receive news of an impending change to their material security, they respond from the lizard brain. They do not respond with a spreadsheet.</p>
+
+<p>The mistake almost everyone makes: they show up with the spreadsheet. They show up with a pros-and-cons list, a Notion doc, a financial model, three Bolster screenshots. They try to <em>logic</em> their partner into the decision. It almost never works.</p>
+
+<p>The move: bring a vision, not an analysis. The conversation is not <em>here is why this is rational</em>. The conversation is <em>here is what our life looks like in three years if I do this, and here is why I want that life, and here is why I think we can build it together</em>. The spreadsheet is a follow-up document. It comes out on the second conversation, not the first.</p>
+
+<div class="callout warn">
+<span class="label">Warning</span>
+If your partner is a hard no after a real vision conversation — not the spreadsheet conversation, the vision conversation — do not try to convert them. The cost of going fractional with a partner who has not joined you in the decision is higher than the cost of staying in your current job for another year while you bring them along.
+</div>
+
+<hr class="divider" />
+</section>
+
+<!-- ============================== CHAPTER 3 ============================== -->
+<section id="ch3">
+<h2 class="chapter">Chapter 3</h2>
+<h3 class="title">The Co-Pilot</h3>
+<p class="lede">What the role actually is, with the marketing peeled off.</p>
+
+<p>Open ten fractional CTO websites. Read the homepages. Notice that you cannot, after twenty minutes of reading, tell any of them apart. They all promise "strategic technology leadership." They all reference "scaling teams." They all have a stock photo of a smiling person in front of a whiteboard with arrows on it.</p>
+
+<p>This is the problem. The market does not have a clear, agreed-upon mental model for what a fractional CTO actually does, which means the buyer — usually a CEO or a founder — has to invent one on the fly during your discovery call. This is bad for you because the model they invent is, more often than not, <em>cheaper senior engineer</em>.</p>
+
+<p>So let's define the role properly. We're going to use three frames, and you should be fluent in all three by the end of this chapter.</p>
+
+<h4>Frame 1: The Co-Pilot Principle</h4>
+
+<p>The CTOx framing — and the cleanest one I've seen — is that a fractional CTO is <strong>a co-pilot to the CEO on the technology domain</strong>. Not a contractor. Not a consultant. Not a hired hand. A co-pilot. Same cockpit. Different seat. Different controls. Same destination.</p>
+
+<p>Three implications fall out of this:</p>
+
+<ol>
+  <li><strong>You own the domain.</strong> The CEO owns the company. You own technology — strategy, architecture, team, vendors, security, AI, data, all of it — as a peer of the other domain owners (CRO owns revenue, CFO owns capital, COO owns operations). If the CEO is asking you to <em>execute</em> within someone else's strategy, you are not a fractional CTO; you are a contractor. This distinction matters when you price.</li>
+  <li><strong>"Fractional" describes cost, not effort.</strong> You are not delivering <em>part</em> of a CTO. You are delivering 100% of the CTO outcome — strategy, hiring, vendor decisions, board readouts, the lot — at a cost that maps to the company's stage. This is what allows a $20M revenue business to access enterprise-grade technology leadership without paying a $400K base.</li>
+  <li><strong>You are not the doer.</strong> The biggest, most expensive, most career-shortening mistake fractional CTOs make is sliding into the code. We'll come back to this when we talk about the "player-coach" trap in Chapter 5. For now: <em>delegate everything except leadership</em>.</li>
+</ol>
+
+<h4>Frame 2: Tech business vs. tech-enabled business</h4>
+
+<p>The Apr 30 CTOx podcast episode introduces a distinction that I think is the single biggest market re-frame for new fractional CTOs, and almost nobody starting out gets it. So you're going to get it, now.</p>
+
+<table>
+<thead>
+<tr><th></th><th>Tech business</th><th>Tech-enabled business</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>What they sell</strong></td><td>The technology <em>is</em> the product (SaaS, API, platform)</td><td>The product is something else (services, physical goods, professional advice, insurance, healthcare); technology runs the engine</td></tr>
+<tr><td><strong>How they spend on tech</strong></td><td>Tech is treated as R&D — large team, modern stack, in-house</td><td>Tech is treated as overhead — small team, often outsourced, often a decade behind</td></tr>
+<tr><td><strong>What they need from a leader</strong></td><td>Sophisticated technical strategy, hiring at the senior IC level, deep architecture</td><td>Translation. Build-vs-buy judgment. Vendor management. AI introduction. Modernization without disruption.</td></tr>
+<tr><td><strong>Who they hire today</strong></td><td>Full-time CTO, VP Eng, senior staff engineers</td><td>"IT manager," "tech lead," or a vendor. Often no executive in the room.</td></tr>
+<tr><td><strong>Where you compete</strong></td><td>Against every other ex-FAANG VP, ex-startup CTO, and well-credentialed advisor</td><td>Almost nobody. The market doesn't yet know it needs you.</td></tr>
+</tbody>
+</table>
+
+<p>Every new fractional CTO defaults to the left-hand column. They were a tech-business person their entire career, so they hunt where they know. The problem is the left-hand column is competitive, the buyers are sophisticated and price-sensitive, and the deals are smaller and shorter than you think.</p>
+
+<p>The right-hand column is the under-served market. A $40M revenue manufacturing company. A $25M revenue regional law firm. A $15M revenue medical practice group. These businesses are <em>about to be eaten</em> by their own Blockbuster-Netflix moment, and they know it, and almost none of them have a strategic technology voice in the room. They have an "IT person" who keeps the laptops working. That's it.</p>
+
+<p>You walk in, you understand both the technology <em>and</em> what an enterprise actually looks like from the inside (because you ran one), and you are, by an enormous margin, the most strategic technologist they have ever spoken to. The deals are bigger. The retention is longer. The competition is thinner. The work is more interesting because you are not arguing with a CEO who thinks he is also a CTO.</p>
+
+<div class="callout">
+<span class="label">The Reframe</span>
+You are not selling to startups. You are selling to <em>operators</em>. The companies that need you most are the ones whose category is about to be reshaped by software and AI — and that is, today, every single non-tech category in the country.
+</div>
+
+<h4>Frame 3: The three modalities</h4>
+
+<p>The CTOx Podcast (May 7 episode) breaks the actual delivered work into three modalities. You will eventually offer all three. You should start by being world-class at one.</p>
+
+<ol>
+  <li><strong>Advisor.</strong> You provide strategic guidance, typically a few hours a month, often after an initial deeper engagement. You are the person the CEO calls when they have a decision to make and want a second brain. Low touch. High leverage. Long-running. This is where your existing relationships eventually live.</li>
+  <li><strong>Workshop facilitator.</strong> You run a defined, time-boxed intensive — a half-day or two-day session that delivers a specific artifact. AI roadmap. Architecture review. Build-vs-buy decision framework. Vendor consolidation plan. This is the foot-in-the-door offer that often leads to the larger engagement, and it's also the cleanest standalone product.</li>
+  <li><strong>Embedded leadership.</strong> You are the CTO of the company, in the org chart, in the all-hands, in the board meeting. You are doing the role part-time — typically 1 to 3 days a week — across one to three clients. This is the highest-revenue, highest-impact modality and also the one with the most risk of pulling you back into doer-mode.</li>
+</ol>
+
+<p>The right sequence for most new fractional CTOs:</p>
+
+<ul>
+  <li><strong>First six months:</strong> Lead with the <em>workshop</em>. It is the easiest thing to price ($5K–$15K, fixed), the easiest thing to sell (because the deliverable is concrete), and the easiest thing to deliver well on your first try.</li>
+  <li><strong>Months 6–12:</strong> The workshop converts into <em>embedded</em> engagements. You did the AI roadmap workshop in March; in May the CEO asks if you'd stay on to lead the rollout. That's how the math works.</li>
+  <li><strong>Months 12+:</strong> Embedded engagements eventually become <em>advisor</em> relationships, and the advisor relationships are the annuities. You build a stack of these over years, and that's the business.</li>
+</ul>
+
+<p class="pull">"The Engage, Advisor, Workshop offerings were humongous — because that's literally the core of my business at this point."</p>
+<p class="end">— Sanjay Akut, CTOx member testimonial</p>
+
+<h4>Why the role exists right now</h4>
+
+<p>One more thing before we move on. You might be wondering: <em>if this role is so obviously valuable, why didn't it exist ten years ago?</em></p>
+
+<p>It did, sort of. There have always been independent CTOs and technical advisors. What's changed is the convergence of five trends, all running hot at the same time:</p>
+
+<ol>
+  <li><strong>The AI shock.</strong> Every CEO of every company has been told, in the last 18 months, that AI will reshape their business. Almost none of them know what to do about it. They know they need senior counsel. They know they cannot afford to hire a full-time CTO to figure it out. They can afford $10K a month.</li>
+  <li><strong>Remote work normalization.</strong> The geographic ceiling on a fractional practice is gone. You can serve a Boston insurer, a Phoenix medical group, and a Charlotte logistics company from your home office in Bellevue.</li>
+  <li><strong>The talent shortage at the senior level.</strong> Experienced operators who have done it twice are rare and getting rarer. Companies want them. They don't want to pay full freight.</li>
+  <li><strong>The economic uncertainty premium.</strong> CFOs love a variable cost. A fractional CTO is a line item that can be turned up or down quarterly. A full-time CTO is a 12-month severance liability.</li>
+  <li><strong>The corporate disillusionment.</strong> The supply side of the market — you — is finally fed up with the trade. Three rounds of layoffs. A return-to-office mandate. A CEO LinkedIn post that made your stomach hurt. The talent is ready to leave, and the buyers are ready to buy.</li>
+</ol>
+
+<p>This is not a temporary market quirk. It is a structural shift in how mid-market companies access senior technology counsel. The window for early movers — for establishing dominant positioning in a chosen niche — is open right now and won't be open forever. The next chapter is about how you walk through it.</p>
+
+<hr class="divider" />
+</section>
+
+<!-- ============================== CHAPTER 4 ============================== -->
+<section id="ch4">
+<h2 class="chapter">Chapter 4</h2>
+<h3 class="title">The Wedge</h3>
+<p class="lede">If you are everything to everyone, you are nothing to anyone.</p>
+
+<p>Here is a thing every senior technologist resists, and you are about to resist it too. You're going to want to position yourself as a general-purpose fractional CTO, because your career has been general-purpose and your skills are general-purpose and your impulse is to keep your options open. <strong>Do not do this.</strong> It will cost you nine months and twenty thousand dollars in opportunity cost while you learn why.</p>
+
+<p>The reason is a piece of pricing arithmetic. A generalist fractional CTO competes against every other generalist fractional CTO on the open market, and the open market clears at the lowest price. A specialist fractional CTO competes against almost nobody, and the deals close on value. This is not a moral argument — it's a market structure argument. The market for "fractional CTO" is crowded. The market for "fractional CTO who has shipped HIPAA-compliant AI features in three healthcare companies" is not.</p>
+
+<p>This chapter is how you find your wedge.</p>
+
+<h4>The wedge formula</h4>
+
+<p>A defensible wedge has three coordinates. You need to be able to fill in all three.</p>
+
+<table>
+<thead>
+<tr><th>Coordinate</th><th>What it answers</th><th>Examples</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Who</strong></td><td>The specific kind of company that hires you</td><td>Series A/B B2B SaaS · PE-owned middle-market software · regional healthcare networks · D2C brands $10–50M ARR · industrial manufacturers post-PE acquisition</td></tr>
+<tr><td><strong>What</strong></td><td>The specific outcome you deliver</td><td>Re-platform off the founder's prototype · stand up an AI-native data team · pass SOC 2 in 90 days · cut cloud spend 40% in 60 days · ship a GenAI product feature that actually retains users</td></tr>
+<tr><td><strong>Why you</strong></td><td>The specific reason the prospect should believe you, and not the next guy on Bolster, can do it</td><td>I have done this exact thing five times · I built the team that built the thing your competitor uses · I wrote the SOC 2 playbook used by [recognizable company]</td></tr>
+</tbody>
+</table>
+
+<p>String the three together into a single sentence and that's your positioning. The template I use, and the one CTOx teaches, is simple:</p>
+
+<div class="callout">
+<span class="label">Positioning Sentence</span>
+<em>I help <strong>[WHO]</strong> achieve <strong>[WHAT specific outcome]</strong>, because <strong>[WHY you are uniquely qualified]</strong>.</em>
+</div>
+
+<p>Some examples, written the way they should be written:</p>
+
+<ul>
+  <li><em>I help Series B B2B SaaS companies replatform off founder code without missing a quarter, because I've done this three times — at companies you've heard of.</em></li>
+  <li><em>I help PE-owned middle-market software companies hit their EBITDA targets by killing tech debt and consolidating vendors, because I spent six years cleaning up the technology of acquired companies inside a PE portfolio.</em></li>
+  <li><em>I help regional healthcare networks stand up HIPAA-compliant AI workflows that pass clinical review, because I led the AI/ML team at a public health-tech company and shipped four such features.</em></li>
+  <li><em>I help D2C brands at $10–50M ARR cut their tech stack cost by 40% without breaking ops, because I've audited and rebuilt the stacks of nine of them in the last three years.</em></li>
+</ul>
+
+<p>Now look at those four and notice what's missing. None of them say "strategic." None of them say "scaling." None of them say "transformation." Each is a who, a what, and a why, and each is specific enough that a CEO can read it in seven seconds and know whether to call you.</p>
+
+<h4>The two-wedge strategy</h4>
+
+<p>Here is a tactic CTOx teaches that I have not seen anywhere else, and it's worth its weight in gold. You don't pick one wedge. You pick two: a <strong>front-stage</strong> wedge and a <strong>back-stage</strong> wedge.</p>
+
+<p>The front-stage wedge is the one on your website, your LinkedIn headline, your conference talk title. It is sharp, narrow, and unmistakable. <em>I help regional healthcare networks ship HIPAA-compliant AI.</em></p>
+
+<p>The back-stage wedge is the broader competence you bring to bear <em>once you are inside</em>. The CEO hired you for the AI thing. Three weeks in, she discovers you also know how to fix her vendor spend, restructure her engineering org, and design a board-grade KPI scorecard. She had no idea. She had no idea because you didn't lead with it. You let her hire you for the narrow thing and then revealed the broader value as it became useful.</p>
+
+<p>This is how a $10K/month workshop engagement becomes a $20K/month embedded engagement becomes a multi-year advisor relationship. The front-stage wedge gets you in the door. The back-stage wedge keeps you there.</p>
+
+<div class="callout move">
+<span class="label">Move</span>
+Write your front-stage wedge in one sentence using the template above. Then write the three back-stage competencies you'd bring once you're inside. The front-stage goes on your LinkedIn headline. The back-stage goes on your Bolster profile, your proposal template, and the back half of your discovery calls. Different audiences, different altitudes, same person.
+</div>
+
+<h4>How to actually pick</h4>
+
+<p>The most common reason people fail to pick is they don't know how to choose between three or four plausible wedges. You think: <em>I could do the AI thing, or the PE portfolio thing, or the SaaS replatform thing, or the regulated industries thing — they all sound fine.</em> You think this for six months and pick none.</p>
+
+<p>Force the choice with three filters:</p>
+
+<ol>
+  <li><strong>Where have you done this before, repeatedly?</strong> Not "have you done it once." <em>Repeatedly.</em> If you can show three companies' worth of evidence, the market will believe you. If you can show one, it won't.</li>
+  <li><strong>What's the buyer's pain on a 1-to-10 scale?</strong> Your wedge has to land on a problem that keeps a CEO up at night. "I help companies improve their CI/CD pipelines" — a 3. "I help your team ship AI features your investors keep asking about" — a 9. Pick a 9.</li>
+  <li><strong>Can you describe one specific person, by name, who has the exact problem you solve?</strong> If you can name an actual human being who would write you a check tomorrow, the wedge is real. If you cannot, the wedge is a theory. Theories don't close.</li>
+</ol>
+
+<p>Run all three plausible wedges through all three filters. If a wedge scores well on all three, that's your wedge. If two score well, lead with the one where you have a named first prospect.</p>
+
+<blockquote>
+"The KPI-driven framework became a real hook in my sales conversations. Once I started framing things that way, it changed how I approached clients and helped me stand out."
+<cite>Chris Marrs, President, ChrisMarrsCTO</cite>
+</blockquote>
+
+<p>One final note. Your wedge will evolve. The wedge you pick on Day 30 will look different from the wedge you have on Day 365. That is fine. The mistake is not "picking the wrong wedge." The mistake is refusing to pick one at all and pretending that breadth is a strategy. Breadth is not a strategy. Breadth is what you have when you haven't done the hard work of choosing.</p>
+
+<hr class="divider" />
+</section>
+
+<!-- ============================== CHAPTER 5 ============================== -->
+<section id="ch5">
+<h2 class="chapter">Chapter 5</h2>
+<h3 class="title">The Offer</h3>
+<p class="lede">Engage, Advisor, Workshop — and the math behind each.</p>
+
+<p>You have a wedge. Now you need a menu. A menu is not a price list; it is the structured shape of the work you will accept and the value-anchored prices attached to each shape. The reason you need a menu before you have a single discovery call is that without one, the prospect drives the conversation, and the conversation becomes <em>how much per hour</em>, and the moment that happens, you have lost.</p>
+
+<h4>Hourly billing is a trap</h4>
+
+<p>Let me be direct, because I have watched too many talented technologists climb out of corporate roles and then quietly recreate the corporate trade by billing hourly. Hourly billing is a trap. Here is why.</p>
+
+<p>When you bill hourly:</p>
+
+<ul>
+  <li>Your income is capped by the number of hours in a week.</li>
+  <li>You are punished, financially, for getting faster and smarter.</li>
+  <li>Every conversation about scope becomes a conversation about hours.</li>
+  <li>The client thinks of you as a resource, not a partner.</li>
+  <li>You will be the first line item cut when the quarter goes sideways.</li>
+</ul>
+
+<p>Jonathan Stark — whose podcast <em>Ditch Hourly</em> is on the Blueprint reading list for exactly this reason — calls this "hourly billing is nuts," and he's right. The fractional CTO model only works on retainers and fixed-fee engagements. The hour does not appear on your invoice. The hour does not exist in your client's mind. What exists is an outcome and a price.</p>
+
+<h4>The three-tier menu</h4>
+
+<p>Adapted directly from the CTOx Engage / Advisor / Workshop framework, with the rate ranges that fall out of the actual market — Bolster's data, the CTO Club's rate surveys, and the CTOx Podcast's own published numbers.</p>
+
+<table>
+<thead>
+<tr><th>Tier</th><th>What it is</th><th>Time</th><th>Price</th><th>When to sell it</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Workshop</strong><br/><span style="color:var(--muted);font-size:12px">(Foot in the door)</span></td>
+  <td>A defined, time-boxed intensive that delivers a single named artifact: an AI roadmap, an architecture review, a vendor consolidation plan, a SOC 2 readiness assessment, a build-vs-buy decision framework.</td>
+  <td>Half-day to 2-day intensive plus 1 follow-up week</td>
+  <td><strong>$5,000 – $15,000</strong><br/>(fixed fee)</td>
+  <td>First conversation. New relationship. Skeptical buyer. CEO who has been "burned by consultants." It's small enough to say yes to and concrete enough to defend.</td>
+</tr>
+<tr>
+  <td><strong>Engaged</strong><br/><span style="color:var(--muted);font-size:12px">(The core retainer)</span></td>
+  <td>Embedded fractional CTO. You are the CTO of the company, part-time. Strategy, hiring, vendor decisions, architecture, board readouts, the lot.</td>
+  <td>~1–3 days/week<br/>(8–24 hrs)</td>
+  <td><strong>$10,000 – $25,000 / month</strong><br/>(monthly retainer, 6 or 12-month terms)</td>
+  <td>After a successful workshop. After a clear scope conversation. After the CEO has used the language "I wish you could just stay on."</td>
+</tr>
+<tr>
+  <td><strong>Advisor</strong><br/><span style="color:var(--muted);font-size:12px">(The annuity)</span></td>
+  <td>Low-touch strategic guidance after a deeper engagement has wound down, or for a CEO who needs a second brain but doesn't need an embedded leader.</td>
+  <td>4–8 hrs/month, structured</td>
+  <td><strong>$3,000 – $5,000 / month</strong><br/>(monthly retainer, auto-renewing)</td>
+  <td>When an Engaged contract ends and the CEO doesn't want to lose access. When a prospect can't afford Engaged but the relationship is worth seeding.</td>
+</tr>
+</tbody>
+</table>
+
+<h4>The fourth tier nobody talks about</h4>
+
+<p>Beyond the three named tiers is a fourth move worth mentioning: <strong>asymmetric upside</strong>. Equity grants. Performance bonuses tied to KPIs. Revenue share on AI features you ship. Success fees on PE exits where you materially moved the multiple.</p>
+
+<p>This is not a beginner move. You should not be offering equity-only deals in year one — you will get burned, because most companies do not exit, and your time is the most valuable thing you own. But you should be aware that <em>once you have a base of cash retainers</em>, layering equity on top of one or two of them is how you build wealth, not just income.</p>
+
+<p>The CTOx framing — "asymmetric upside" — is the right one. You take cash for your time, and equity for your <em>conviction</em>. Equity goes only to companies where you would, if you were ten years younger, want to be the full-time CTO.</p>
+
+<h4>The player-coach trap</h4>
+
+<p>There is a specific kind of deal that will be offered to you, repeatedly, and you have to learn to recognize it on sight and walk away. It comes wrapped in a phrase: <em>"We're looking for a player-coach."</em></p>
+
+<p>The Apr 2 CTOx podcast episode does this trap full justice. The CEO who says "player-coach" almost always means: <em>"I want a CTO's strategy and an engineer's hands, for one person's price."</em> What they are describing is two jobs, and the moment you say yes to both, you have failed at the first.</p>
+
+<p>The economic problem: if you're writing code 60% of the week, you have 40% of the week left for the actual CTO job, which is the discernment, the prioritization, the orchestration, the saying-no, the board readouts, the senior hires, the vendor decisions. You will do that job badly. The CEO will notice. They will not, however, conclude that the problem is the structure they set up; they will conclude that the problem is you.</p>
+
+<p>The conductor analogy is the right one. The world's best conductors are usually accomplished musicians, but their highest-value contribution is not playing an instrument; it's orchestrating the whole. A conductor who can't put down the violin is a bad conductor.</p>
+
+<p>The move when you hear "player-coach":</p>
+
+<div class="script">
+<div class="turn"><span class="who them">CEO:</span> What we really need is a player-coach. Someone who can lead strategy but also be hands-on.</div>
+<div class="turn"><span class="who">You:</span> I hear that a lot, and I want to gently push back on it, because I think it'll cost you. The reason you want to hire a CTO is to make better technical decisions at the leadership level. Every hour I spend in the code is an hour I'm not spending on those decisions — and the decisions are worth ten times the code. What I'd propose instead is that I run the technical leadership, and we get you a senior engineer or two to do the building. I can help you hire them. That structure costs about the same, and you actually get a CTO out of it.</div>
+</div>
+
+<p>About a third of CEOs hear that, exhale, and say <em>oh yeah, that makes sense</em>. The other two-thirds press for the player-coach anyway. Those are the deals you walk away from. Walking away from bad deals is a skill, and it is one of the most lucrative skills in this practice.</p>
+
+<h4>The contract paperwork — kept simple</h4>
+
+<p>You need three documents to start. Not seven. Not a law firm. Three.</p>
+
+<ol>
+  <li><strong>A one-page MSA (Master Services Agreement).</strong> Mutual NDA, IP assignment (work product belongs to client; pre-existing IP stays yours), indemnification, term, termination (30-day notice, mutual). One page. Reusable for every client. Have a lawyer review it once, then never again.</li>
+  <li><strong>A one-page SOW (Statement of Work) per engagement.</strong> Scope, deliverables, schedule, fee, payment terms (50% up front for workshops; net-15 for retainers). One page. Bespoke per client.</li>
+  <li><strong>A one-page proposal template.</strong> We'll build this in Chapter 7. It is not a contract. It is the document the CEO uses to say yes.</li>
+</ol>
+
+<div class="callout warn">
+<span class="label">Warning</span>
+Do not start with the client's MSA. Their MSA was written for vendors. You are not a vendor. Their MSA will have an indemnification clause that exposes your personal assets and a non-compete that would prevent you from working in your own niche. Always lead with your one-pager. About 70% of CEOs accept it as-is. The other 30% redline it, and the redlines tell you what kind of client they will be.
+</div>
+
+<hr class="divider" />
+</section>
+
+<!-- ============================== CHAPTER 6 ============================== -->
+<section id="ch6">
+<h2 class="chapter">Chapter 6</h2>
+<h3 class="title">The Attract Engine</h3>
+<p class="lede">How clients find you before you find them.</p>
+
+<p>This is the chapter most senior technologists do not want to read, because it is about marketing, and marketing is what other people do. You did not become a CTO by tweeting. You became a CTO by shipping. The idea of building a "personal brand" makes you feel a little sick, and I'm with you. I find it tedious too.</p>
+
+<p>Here is the reframe. You are not building a brand. You are <strong>doing your job in public</strong>. The job is technical leadership. The public part is the new wrinkle. A fractional CTO without a body of public work has to hustle for every client. A fractional CTO with a body of public work has clients find them. That is the entire difference.</p>
+
+<p>This chapter is the minimum-viable attract engine. It is not the maximum. It is what you need to have running by Day 60.</p>
+
+<h4>The attract→convert→serve arc</h4>
+
+<p>CTOx organizes the whole practice around three movements: <strong>attract</strong>, <strong>convert</strong>, <strong>serve</strong>. This chapter is attract. Chapter 7 is convert. Chapter 8 is serve. The reason the order matters is that almost every failing fractional CTO has the order wrong — they try to convert before they have done the attract work, which means every conversation is a cold conversation, and cold conversations close at roughly 1 in 50, and at $10K/month per deal, that is a brutal funnel.</p>
+
+<p>The arc works in the other direction:</p>
+
+<ol>
+  <li><strong>Attract</strong> creates inbound — people who know what you do before you've met them.</li>
+  <li><strong>Convert</strong> turns that inbound into proposals and signed contracts.</li>
+  <li><strong>Serve</strong> delivers in a way that produces testimonials, referrals, and renewals, which then feed back into attract.</li>
+</ol>
+
+<p>It is a loop. The first loop is the hardest, because attract has nothing to point at yet. Every loop after is easier.</p>
+
+<h4>Five attract surfaces, ranked</h4>
+
+<p>You will hear a hundred attract tactics. Most are noise. These five, run in this order, are the spine.</p>
+
+<table>
+<thead>
+<tr><th>Rank</th><th>Surface</th><th>Effort</th><th>Time to first lead</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><strong>Network activation</strong> (warm reconnects, no pitch)</td>
+  <td>Low</td>
+  <td>2–6 weeks</td>
+  <td>Single highest-ROI activity in your first 90 days. We'll detail this below.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><strong>LinkedIn posts</strong> (2–3 per week, opinionated, specific)</td>
+  <td>Medium</td>
+  <td>4–12 weeks</td>
+  <td>The platform where your buyers (CEOs, PE partners, board members) actually read. Twitter/X is a content cul-de-sac for this audience.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><strong>Marketplace profiles</strong> (Bolster, Go Fractional, Fractional Jobs)</td>
+  <td>Low (one-time)</td>
+  <td>4–16 weeks</td>
+  <td>Set up Day 1. Inbound from these is sporadic but free. Treat them as a signal channel, not a sales channel.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>A flagship piece of content</strong> (essay, framework, teardown)</td>
+  <td>High (one-time)</td>
+  <td>3–9 months</td>
+  <td>The thing you become known for. The "AI Build vs. Buy Decision Framework." The "PE-Owned SaaS Tech Audit Checklist." Once written, it works for years.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><strong>Speaking</strong> (podcasts as a guest, then your own talks)</td>
+  <td>Medium</td>
+  <td>2–6 months</td>
+  <td>Start by getting on other people's podcasts in your niche. Easier than you think.</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Network activation: the one to do first</h4>
+
+<p>Here is the dirty secret of the fractional CTO business: most of the early deals come from people you already know. Not strangers. Not LinkedIn. People who already trust you and who, with a single nudge, will introduce you to two or three CEOs who need exactly what you do.</p>
+
+<p>The problem is you stopped talking to most of them five years ago.</p>
+
+<p>Your job, in your first 30 days, is to systematically re-engage 30 to 50 specific humans from your professional past. Not all of them. Specifically these:</p>
+
+<ul>
+  <li><strong>Former direct reports who became CTOs, VPs, or founders.</strong> They now have hiring authority or board influence at a company.</li>
+  <li><strong>Former bosses and skip-level managers.</strong> They have built the network of CEOs you want access to.</li>
+  <li><strong>Co-founders, investors, and board members from earlier in your career.</strong> Same.</li>
+  <li><strong>Alumni — your university, your past companies, your accelerator cohorts.</strong> Pre-existing affinity, low friction.</li>
+  <li><strong>PE and VC people in your geography.</strong> Their portfolio companies are exactly the buyers you want.</li>
+</ul>
+
+<div class="callout move">
+<span class="label">Move</span>
+Build the list this week. Open a spreadsheet. Five columns: Name, Relationship, Last contact, Channel, Status. Add 50 names. Don't curate. Just dump. You'll edit later.
+</div>
+
+<p>Now the activation itself. The single biggest mistake is that people, when they finally write to a contact from five years ago, lead with the pitch. <em>Hi Marcus, long time! I'm now offering fractional CTO services and was wondering if you knew anyone...</em></p>
+
+<p>Marcus will not respond. Marcus has not heard from you in five years and your first message is asking for a referral. This is, in any other relationship, considered rude.</p>
+
+<p>The correct opening message is the one you would send to a friend you haven't seen in a while. No ask. Just contact.</p>
+
+<div class="script">
+<div class="turn"><span class="who">You:</span> Marcus — was thinking about you the other day. I saw [company] hit [milestone] — congrats. Been a minute. Are you still in [city]? Would love to catch up over coffee or a call sometime in the next few weeks if you're up for it. No agenda.</div>
+</div>
+
+<p>The "no agenda" is load-bearing. It's permission for Marcus to say yes without dread. About 60% of these messages get a yes. Of those, on the call, you spend the first 25 minutes catching up. You ask Marcus about his work. You listen. You are genuinely curious, because Marcus is an interesting person you used to know.</p>
+
+<p>At about the 25-minute mark, Marcus will ask what you're up to. <em>This is the only sentence in the call that matters.</em> You answer with your positioning sentence, in one breath, and you stop talking.</p>
+
+<div class="script">
+<div class="turn"><span class="who them">Marcus:</span> So what are you up to these days?</div>
+<div class="turn"><span class="who">You:</span> I left [BigCo] in March. I'm now working as a fractional CTO — specifically helping [WHO] do [WHAT outcome], because [WHY you]. It's still early but I'm having a lot of fun.</div>
+</div>
+
+<p>Marcus will do one of three things. He'll say <em>that's awesome, good for you</em> — fine, you've planted a seed. He'll say <em>oh, you should talk to my friend who's doing exactly that</em> — that's a referral, and you treat it like one. Or, in maybe 5–10% of cases, he'll say <em>actually, my company needs that</em> — that's a discovery call, and you book a follow-up for next week.</p>
+
+<p>The math: 30 reconnects produces, in my experience and in the experience of every successful fractional CTO I have watched build a practice from scratch, about 5 referrals and 1 to 3 first discovery calls. From 30 messages. In a quarter.</p>
+
+<blockquote>
+"By asking, you're not bothering people — you're giving them the opportunity to help. That's priceless for them, too. Network activation changed everything."
+<cite>Yeomy Waller, CTOx member testimonial</cite>
+</blockquote>
+
+<h4>LinkedIn: doing your job in public</h4>
+
+<p>You should be posting on LinkedIn 2 to 3 times a week. The posts should not be motivational. They should not be career-advice. They should be <em>you doing your actual job, out loud, in front of an audience that includes your buyers.</em></p>
+
+<p>Five post archetypes that work, ranked by ease:</p>
+
+<ol>
+  <li><strong>The teardown.</strong> "I reviewed a $40M SaaS company's tech stack last week. Here's what I'd cut and why." Specific. Opinionated. Reveals expertise. Does not name the client.</li>
+  <li><strong>The framework.</strong> "Here's the 4-question Build vs. Buy framework I run with every new client. ↓" Numbered list. Saveable. Shareable.</li>
+  <li><strong>The contrarian observation.</strong> "Everyone is hiring a 'Head of AI.' Almost none of them need one. Here's what they need instead." Earns engagement by disagreeing with the obvious.</li>
+  <li><strong>The story.</strong> "A CEO I work with wanted to fire her CTO. I told her not to. Here's what she did instead and what happened." Lior writes a version of these constantly on LinkedIn; they are his single most engaged format.</li>
+  <li><strong>The list.</strong> "10 questions to ask a fractional CTO before you hire them." Listicles still work because they are easy to skim.</li>
+</ol>
+
+<p>One specific stylistic note. Write the way a senior operator writes — not the way a marketer writes. Short sentences. Specific numbers. Named tools and named tradeoffs. No emojis. No "🚀". No "thrilled to announce." The audience you want is a tired CEO scrolling at 10 PM. She does not have patience for marketing voice. She has patience for someone who sounds like the senior person she wishes she could afford to hire.</p>
+
+<h4>The Q&amp;A with Lior on marketing — the three things to steal</h4>
+
+<p>The recently published Q&amp;A with Lior (Vimeo) on marketing strategies is the cleanest single source on how to think about fractional CTO marketing. Three takeaways are worth pulling out directly:</p>
+
+<ol>
+  <li><strong>Stop talking about yourself. Talk about the buyer's problem.</strong> Every post, every page, every conversation should be 80% about the prospect's world and 20% about your work. Most aspiring fractional CTOs invert that ratio and wonder why nobody is engaging.</li>
+  <li><strong>The KPI is conversations, not impressions.</strong> 50,000 LinkedIn impressions that generate zero discovery calls is a failure. 500 impressions that generate one discovery call is a win. Optimize the funnel for the bottom, not the top.</li>
+  <li><strong>Marketing is reps. The first ten posts will be bad. The second ten will be better. The third ten will start to land. Most people give up at post seven.</strong> The single highest-leverage marketing investment is showing up consistently for ninety days before judging whether it works.</li>
+</ol>
+
+<p class="pull">"Before the CTOx Accelerator, I was lost trying to market myself. Now, I'm a confident entrepreneur with a clear message, a repeatable system, and zero hesitation about showing up as myself."</p>
+<p class="end">— Jon Benedict, CTOx member testimonial</p>
+
+<hr class="divider" />
+</section>
+
+<!-- ============================== CHAPTER 7 ============================== -->
+<section id="ch7">
+<h2 class="chapter">Chapter 7</h2>
+<h3 class="title">The Conversion Conversation</h3>
+<p class="lede">Discovery, proposal, close — the three moves and the three failure modes.</p>
+
+<p>You have done the attract work. The phone rings. It is a CEO. She found you through a LinkedIn post — or Marcus introduced her — or she clicked your Bolster profile. She wants to talk. <em>Now what?</em></p>
+
+<p>This is the chapter where the most fragile thing happens. Most senior technologists, on their first discovery call, do one of three things wrong: they pitch too early, they over-scope, or they under-price. By the end of this chapter you will have the exact moves to avoid all three.</p>
+
+<h4>The discovery call</h4>
+
+<p>The frame to bring to every first call: <strong>the goal is not to close. The goal is to figure out if there's a deal worth pursuing, and to get the prospect to talk for 80% of the call.</strong></p>
+
+<p>Steal this from Rob Fitzpatrick's <em>The Mom Test</em>, which is on the Blueprint reading list for exactly this reason: the best questions you can ask are open-ended, oriented around the prospect's actual current behavior, and free of leading. You are diagnosing, not selling. The selling, paradoxically, happens because you are not selling.</p>
+
+<p>A 45-minute discovery script that works:</p>
+
+<div class="script">
+<div class="turn"><span class="who">Minute 0–5</span> Warm intro. Thank her for the time. Set the frame: "I'd love to spend the first 30 minutes understanding your business and what brought you here. Then if it makes sense, I'll share how I might be able to help and we can figure out next steps."</div>
+<div class="turn"><span class="who">Minute 5–15</span> The business. <em>"Tell me about [Company]. Where are you today, where are you trying to be in 18 months, and what's standing between those two?"</em> Listen. Take notes. Do not interrupt.</div>
+<div class="turn"><span class="who">Minute 15–25</span> The technology. <em>"What does your tech setup look like today? Who owns it? What's working? What keeps you up at night about it?"</em></div>
+<div class="turn"><span class="who">Minute 25–35</span> The trigger. <em>"What made now the right time to have this conversation? What changed in the last 30 days?"</em> This question is the gold one. The answer reveals urgency, budget, and the real decision-maker.</div>
+<div class="turn"><span class="who">Minute 35–42</span> Your move. Now — and only now — you share how you might help. Not a pitch. A reflection. "Based on what you've described, what I'd typically do in a situation like this is..." and you walk through, briefly, the workshop or the engagement that fits.</div>
+<div class="turn"><span class="who">Minute 42–45</span> The close-of-call. <em>"Here's what I'd suggest as a next step: I'll send you a one-page proposal by Friday with a recommended starting point and pricing. You take a few days to review. We talk again next Tuesday. Sound good?"</em></div>
+</div>
+
+<p>Notice the moves embedded in the script:</p>
+
+<ul>
+  <li>You spent 70% of the call listening. The CEO walked away thinking "this person actually understood my business." That is the entire first call.</li>
+  <li>You did not give a price on the call. Pricing on the first call locks you into a number before you have written the scope. The proposal goes by email.</li>
+  <li>You set a specific next step with a specific date. Discovery calls that end with "let's stay in touch" die. Discovery calls that end with "I'll send you a proposal by Friday" don't.</li>
+</ul>
+
+<h4>The one-page proposal</h4>
+
+<p>The proposal is the single most leveraged document you will write. It is what the CEO forwards to her co-founder, her CFO, her board chair. It must work without you in the room.</p>
+
+<p>A one-page proposal — and one page is correct; longer proposals do not close better, they close worse — has six sections, in this order.</p>
+
+<table>
+<thead>
+<tr><th>Section</th><th>Length</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>1. The situation</strong></td><td>3–4 sentences</td><td>You mirror back, in her language, what she told you on the call. This is the section that makes her say "yes, this person gets it." Use the words she used.</td></tr>
+<tr><td><strong>2. The recommended engagement</strong></td><td>2–3 sentences</td><td>Name the tier (Workshop, Engaged, Advisor). Name what it is.</td></tr>
+<tr><td><strong>3. What you'll deliver</strong></td><td>3–6 bullets</td><td>Concrete artifacts and outcomes. "By end of week 4: a written 18-month technology roadmap reviewed with you and your leadership." Not "strategic guidance."</td></tr>
+<tr><td><strong>4. What it will cost</strong></td><td>1 line</td><td>The number. Monthly retainer or fixed fee. Payment terms. No ranges. No "starting at."</td></tr>
+<tr><td><strong>5. Timeline and term</strong></td><td>1–2 lines</td><td>Start date, term length, renewal terms.</td></tr>
+<tr><td><strong>6. About me</strong></td><td>2–3 sentences + link</td><td>One credibility paragraph. Link to your one-pager bio. That's it.</td></tr>
+</tbody>
+</table>
+
+<h4>The pricing conversation</h4>
+
+<p>This is the conversation senior technologists fear most, and the fear is irrational, and it costs them tens of thousands of dollars per deal. Let's defuse it.</p>
+
+<p>The pricing conversation almost always starts with the prospect asking some version of: <em>"What's this going to cost?"</em></p>
+
+<p>Most new fractional CTOs answer this question. <strong>Don't.</strong> The number, said into the air on a call, is divorced from value. It is just a number, and the prospect's brain compares it to whatever number is sitting next to it in their head — usually a senior engineer's salary, which is the wrong comparison.</p>
+
+<p>Instead, deflect. The script:</p>
+
+<div class="script">
+<div class="turn"><span class="who them">CEO:</span> So what does this typically cost?</div>
+<div class="turn"><span class="who">You:</span> Great question, and I want to give you a specific number rather than a range — which means I want to make sure I scope it right first. My typical engagements fall between $5K for a focused workshop and $25K a month for embedded leadership, depending on the scope. Can I send you a proposal by Friday with the specific number for what you're describing? Then you have something real to react to.</div>
+</div>
+
+<p>About 90% of CEOs say yes to this. The 10% who push back and demand a number on the call are either tire-kickers or buyers who have been burned before and need reassurance. For them, give the higher end of your range, calmly, and say <em>"and I'll send you a proposal Friday with the exact scoping."</em></p>
+
+<p>The second move: <strong>price on value, not effort.</strong> When you do quote the price in the proposal, anchor it to what the engagement is worth to <em>their</em> business, not to what it costs <em>you</em> to deliver.</p>
+
+<div class="callout">
+<span class="label">Anchor Question</span>
+Before you put a price on a proposal, ask yourself: <em>what would it cost this company to NOT do this engagement?</em> Answer in dollars. A $25K/month retainer to a $40M revenue company that's about to lose a quarter because of a bad architecture decision is not expensive — it's cheap. Price accordingly.
+</div>
+
+<h4>The three failure modes</h4>
+
+<p>Three failure modes I have watched, repeatedly, kill deals that should have closed. Recognize them.</p>
+
+<p><strong>Failure mode 1: Pitching too early.</strong> You felt the conversation getting away from you and you launched into the pitch at minute 12. The CEO mentally checked out. She came to be diagnosed; you tried to sell her. The deal is now 60% less likely to close.</p>
+
+<p><em>The move:</em> If you feel the urge to pitch, ask another question instead. The pitch happens at minute 35 or not at all.</p>
+
+<p><strong>Failure mode 2: Over-scoping.</strong> She mentioned three problems. You wrote a proposal that solves all three. The price is $35K/month and the proposal is four pages long and now she has to take it to her CFO and a discussion that should have taken a week takes a month and she finds another priority.</p>
+
+<p><em>The move:</em> Solve the most painful problem first. The other two go in a "phase 2" line at the bottom. Get the foot in the door. Expand inside.</p>
+
+<p><strong>Failure mode 3: Under-pricing.</strong> You quoted $7K/month because you were nervous. She accepted instantly. You felt great for a week. Six weeks in, you realize the engagement is worth $20K/month and you are now stuck for the term of the contract resenting your client.</p>
+
+<p><em>The move:</em> Use your highest-confidence number, then add 20%. Quote that. If they take it, you priced correctly. If they push back, you have negotiating room. If they walk, they were never your client. The single fastest way to ruin your fractional practice is to fill your calendar with $5K/month engagements that should have been $15K/month engagements.</p>
+
+<blockquote>
+"Just as I was ready to give up, CTOx pulled me back in. That one check-in unlocked the opportunity I needed — and helped me step into a stronger version of myself."
+<cite>Jacob Silberstein, CTOx member testimonial</cite>
+</blockquote>
+
+<hr class="divider" />
+</section>
+
+<!-- ============================== CHAPTER 8 ============================== -->
+<section id="ch8">
+<h2 class="chapter">Chapter 8</h2>
+<h3 class="title">The First 30 Days</h3>
+<p class="lede">Derisk, Unclog, Scale — the Functional Technology™ Framework, in practice.</p>
+
+<p>You signed the contract. The CEO is excited. You are excited. Now is the moment where most fractional CTO engagements quietly fail, and the cause is almost always the same: <strong>you have not, in your first 30 days, given the CEO an unambiguous, board-presentable reason to keep paying you</strong>. The honeymoon ends in week 6 and the first invoice question arrives in week 8 and by week 12 you are either renewed or you are not.</p>
+
+<p>The first 30 days are not for getting to know the team. The first 30 days are for shipping a specific, named outcome that the CEO can point at and say <em>that, that thing right there, is why we hired her</em>.</p>
+
+<p>The CTOx Functional Technology™ Framework gives you a clean three-phase structure to do this. We're going to use it, and we're going to be more specific about what happens in each phase than the public version is.</p>
+
+<h4>Phase 1 — Derisk (Days 1–10)</h4>
+
+<p><strong>The goal:</strong> identify the things that could blow up the business and triage them. You are looking for the unexploded ordnance.</p>
+
+<p>The reason this is first is that derisk produces visible value immediately and earns you the right to do everything else. A CEO who watches you find — in your first week — three risks she did not know she had will, forever after, treat you like a senior person.</p>
+
+<p>The Derisk audit, in eight named risk categories:</p>
+
+<table>
+<thead>
+<tr><th>Risk Category</th><th>What you're looking for</th><th>How you find it</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Key person risk</strong></td><td>Single engineers who, if they quit, take a critical system with them. The "bus factor of one."</td><td>Ask the engineering manager: "Who, on your team, can we not afford to lose?" Then count. If more than 30% of names are single points of failure, you have a problem.</td></tr>
+<tr><td><strong>Security risk</strong></td><td>Exposed secrets in repos. Default passwords on prod. Unpatched dependencies. Missing MFA on critical systems.</td><td>30-minute review of GitHub/GitLab settings, IAM, and the last 3 security audits — if any exist.</td></tr>
+<tr><td><strong>Vendor risk</strong></td><td>Critical SaaS vendors that are uncontracted, sole-source, or quietly going out of business.</td><td>Ask finance for the list of all SaaS subscriptions. Sort by annual spend. Top 10 each get a 1-line risk note.</td></tr>
+<tr><td><strong>Compliance risk</strong></td><td>SOC 2, HIPAA, GDPR, PCI gaps that will surface during a customer audit or a fundraise.</td><td>Ask the CEO when the last security questionnaire was completed and what was committed to. Compare to reality.</td></tr>
+<tr><td><strong>Architectural risk</strong></td><td>A system the team is afraid to touch. A database that has not been backed up in six months. A deploy pipeline that breaks every Friday.</td><td>Ask the lead engineer: "What's the one part of the system you hope I never ask you to change?" That's it.</td></tr>
+<tr><td><strong>Financial risk</strong></td><td>Cloud spend that is 2–4x what it should be. Vendor contracts auto-renewing at full rate.</td><td>Pull the cloud bill. Compare to revenue. If cloud > 15% of revenue, dig.</td></tr>
+<tr><td><strong>Hiring risk</strong></td><td>Open reqs that have been open for 6+ months. Recently departed senior engineers. Quiet quitting.</td><td>Ask HR for retention numbers. Ask the manager what they'd change about hiring if they could.</td></tr>
+<tr><td><strong>Roadmap risk</strong></td><td>Commitments to investors, customers, or the board that the team will not meet, and that no one has yet said out loud.</td><td>Compare the public roadmap to the team's actual velocity. The delta is the risk.</td></tr>
+</tbody>
+</table>
+
+<p>At the end of Day 10, you produce one artifact: <strong>the Risk Register</strong>. A single page (or one slide). Eight rows. Each row: risk, severity (red/yellow/green), and recommended action. You walk through it with the CEO in a 45-minute meeting. You will be shocked at how much value this single artifact produces. CEOs of mid-market companies have, in many cases, <em>never seen their technology risk surface laid out this way</em>. It is the moment they stop thinking of you as a hire and start thinking of you as essential.</p>
+
+<h4>Phase 2 — Unclog (Days 11–20)</h4>
+
+<p><strong>The goal:</strong> find the one or two specific bottlenecks slowing the business and remove them. This is where you earn your "quick win."</p>
+
+<p>The quick win is a deliberate, named outcome you ship in Phase 2 that the CEO can point at and that is visibly tied to your arrival. Without a quick win, you are theoretical. With one, you are real.</p>
+
+<p>Good Phase-2 quick wins:</p>
+
+<ul>
+  <li><strong>Cut a vendor.</strong> Find the SaaS contract you can kill or consolidate. Save $40K/year. The savings number is your first ROI receipt.</li>
+  <li><strong>Fix a hiring stall.</strong> Rewrite a stalled job description. Open the search. Have a candidate in pipeline by day 20.</li>
+  <li><strong>Ship a deferred decision.</strong> The team has been arguing for six months about a database migration. You walk in, listen, make the call. The team is grateful. They've wanted someone senior to just <em>decide</em>.</li>
+  <li><strong>Set up the metrics scoreboard.</strong> The CEO does not currently know how to read the health of her engineering org. You install a one-page weekly KPI scorecard — velocity, deploy frequency, change-fail rate, cost per active user, security incident count. Now she knows. Forever.</li>
+</ul>
+
+<p>You do not do all of these. You pick one. You ship it cleanly. You point at it.</p>
+
+<h4>Phase 3 — Scale (Days 21–30 and beyond)</h4>
+
+<p><strong>The goal:</strong> design the systems that allow the business to grow without breaking — and produce the written roadmap that becomes the artifact you renew on.</p>
+
+<p>By Day 30, you produce a second artifact: <strong>the 18-Month Technology Roadmap</strong>. Not a Gantt chart. A written narrative, 3 to 5 pages, that answers four questions for the CEO and the board:</p>
+
+<ol>
+  <li>Where are we today, technologically? (a one-page state-of-the-union)</li>
+  <li>Where do we need to be in 18 months to support the business plan?</li>
+  <li>What are the 5–7 initiatives that close that gap, and in what sequence?</li>
+  <li>What does it cost — in dollars, in headcount, in calendar time — and what are the dependencies?</li>
+</ol>
+
+<p>This is the document that, more than any other artifact, justifies your retainer. It is also the document that justifies your next retainer, and the one after that, because it is the document the board reviews quarterly and against which your performance is measured. You are not measured against hours. You are measured against the roadmap.</p>
+
+<div class="callout move">
+<span class="label">Move</span>
+The roadmap meeting at end of Day 30 is the most important meeting of your engagement. Get the CEO, the CFO, and one board member in a room. Walk through the roadmap. Take questions. Adjust. The next day, you send the final version with the adjustments incorporated. That document is now the contract between you and the company, and it is renewed-or-not on the basis of how the document plays out.
+</div>
+
+<h4>What you do not do in your first 30 days</h4>
+
+<p>Equally important. The temptation list:</p>
+
+<ul>
+  <li><strong>You do not write code.</strong> Not one line. Not even to "help the team." Once they see you in the codebase, you are an engineer, not a CTO. The CEO will, at some point, ask if you can "just jump in and help with X." The answer is no, and the move is to find them a senior contract engineer instead, which you can do in a week.</li>
+  <li><strong>You do not reorganize the team in week one.</strong> You will be tempted. The org chart is wrong. You can see it. <em>Wait.</em> You do not have enough context. Reorgs done in month one are reorgs done blind, and they erode the team's trust in you.</li>
+  <li><strong>You do not fire anyone in the first 30 days.</strong> Unless there is a fireable offense — actual misconduct — you give every person on the team your honest, fair assessment over the first 60 days. Fast firings make the rest of the team afraid of you, which is the opposite of what you need.</li>
+  <li><strong>You do not promise a specific outcome you have not validated.</strong> The CEO will, in week 2, ask you to commit to a date or a number. The move is to say "let me get into the work for two more weeks and then I'll give you a defensible commitment." Commitments made early are commitments broken later.</li>
+</ul>
+
+<h4>The conductor versus the violinist</h4>
+
+<p>One more time, because this is the rock that the most experienced and capable fractional CTOs trip over: <strong>your job is not to play the instrument. Your job is to conduct.</strong></p>
+
+<p>A senior leader I deeply respect — Lior writes about this constantly — pulled himself into the code on a high-stakes client engagement because the team was behind and he thought he was "just helping." Six weeks later, he was the bottleneck on three deliverables, he had stopped doing strategic work, the CEO had stopped including him in board prep, and the engagement quietly did not renew.</p>
+
+<p>The fix is mechanical: every Monday morning, you ask yourself one question. <em>Of everything I did last week, what could only have been done by me?</em> If the answer is "less than 60%," you are spending too much time in the wrong altitude. You restructure your week.</p>
+
+<p class="pull">"The highest-value move a fractional CTO can make is often deciding not to build something at all."</p>
+<p class="end">— The CTOx Podcast, "When a CEO Wants a Player-Coach"</p>
+
+<hr class="divider" />
+</section>
+
+<!-- ============================== CHAPTER 9 ============================== -->
+<section id="ch9">
+<h2 class="chapter">Chapter 9</h2>
+<h3 class="title">The Renewal</h3>
+<p class="lede">The ROI scoreboard, the rate increase, and how clients become five-year clients.</p>
+
+<p>Most fractional CTOs do not have a renewal problem. Most fractional CTOs have a <em>visibility</em> problem that looks like a renewal problem. The CEO doesn't quite remember what you did this quarter, so when budget tightening starts, you are on the list of "we'll revisit in Q3," and Q3 quietly never happens.</p>
+
+<p>The fix is a single artifact, presented quarterly, that makes your contribution unambiguous. Call it the ROI scorecard. Build it once. Use it for every client, every quarter, forever.</p>
+
+<h4>The one-page ROI scoreboard</h4>
+
+<p>It has four sections. It fits on one page. It takes you about 45 minutes to update at the end of every quarter. It is the single most lucrative document in your practice because it converts directly into renewals and rate increases.</p>
+
+<table>
+<thead>
+<tr><th>Section</th><th>What goes in it</th><th>Why it matters</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>1. Outcomes shipped</strong></td>
+  <td>3–5 named, dated deliverables from the quarter. <em>"Cut cloud spend 38% (saving $87K/year, annualized). Stood up the AI roadmap reviewed at the Q2 board meeting. Hired a Director of Engineering. Closed the SOC 2 Type 1 audit."</em></td>
+  <td>This is the receipt. CEOs forget. The scoreboard remembers.</td>
+</tr>
+<tr>
+  <td><strong>2. KPIs trended</strong></td>
+  <td>The 5–7 metrics on your weekly scoreboard, plotted across the quarter. Direction matters more than absolute number.</td>
+  <td>It demonstrates that you are not just shipping — you are <em>improving the system</em>.</td>
+</tr>
+<tr>
+  <td><strong>3. Dollars in or out</strong></td>
+  <td>The financial line. Money saved (vendor cuts, cloud optimization). Money earned (a feature shipped that drove ARR). Money de-risked (a compliance gap closed before a customer audit).</td>
+  <td>This is the line the CFO reads. If you are saving the company multiples of your retainer, you are not a cost. You are a profit center.</td>
+</tr>
+<tr>
+  <td><strong>4. Risks on the horizon</strong></td>
+  <td>3 things that, if not addressed in the next quarter, will hurt the business. Your recommended next moves.</td>
+  <td>This is the renewal hook. You are not done. The list of risks is the implicit case for next quarter's engagement.</td>
+</tr>
+</tbody>
+</table>
+
+<p>You present this in a 30-minute meeting with the CEO at the end of every quarter. You walk through it. You ask for questions. You then send the PDF to her by email so she can forward it to the board. Two-thirds of CEOs will, within the next week, forward it to the board chair. That single forward is the renewal.</p>
+
+<h4>The rate increase conversation</h4>
+
+<p>You will, at some point in year one or year two, need to raise your rate. The reasons are mechanical: your demand goes up as your portfolio fills, your risk goes down as your testimonials accumulate, and the market clearing rate for what you do rises every year. If you do not raise rates, you are quietly accepting a pay cut every twelve months.</p>
+
+<p>The conversation goes one of two ways depending on whether you are raising the rate for an <em>existing</em> client or a <em>new</em> client.</p>
+
+<p><strong>For a new client:</strong> trivially easy. You just charge the new rate. You may feel awkward saying the number; the prospect will not feel awkward hearing it. They are comparing it to a full-time CTO base, which is 3–5x what you are quoting. The number is not the problem. Your discomfort with the number is the problem. Solve that on your own time.</p>
+
+<p><strong>For an existing client:</strong> here is the move. You wait for a moment of obvious value delivery — the close of an audit, the ship of a major roadmap milestone, the close of a quarter where the ROI scoreboard makes the case for itself. At that meeting, you say:</p>
+
+<div class="script">
+<div class="turn"><span class="who">You:</span> Before we lock in the next quarter, I want to flag one thing. My new client rate is now $[20K, or whatever] a month. I'm holding your rate at $[15K] for one more quarter, and starting [next quarter] I'd like to move you to the new rate. Given what we've shipped together — and what's on the roadmap for next quarter — I think it's the right call. Anything you want to discuss about that?</div>
+</div>
+
+<p>The structure: you announce, you justify with shipped value, you propose a transition, you invite discussion. About 80% of clients accept. About 15% negotiate to a slightly lower number. About 5% balk, and that 5% was always going to balk at some price, and you have lost no information by finding out at $20K instead of $25K.</p>
+
+<h4>The renewal trap to avoid</h4>
+
+<p>One specific trap. Do not, ever, let a contract <em>auto-renew at the same rate</em> through inertia. Every renewal is an opportunity to re-anchor the relationship. If you skip that opportunity, you are signaling that the work is the same as it was, that the value is the same as it was, and that the price should be the same as it was. None of those three are true after twelve months of compounding context.</p>
+
+<p>The mechanism: a calendar reminder, 60 days before each contract's renewal date, that says <em>"prepare renewal proposal for [client]."</em> You write a fresh one-page proposal — not a renewal, a new proposal — with the new rate, the new scope, the new roadmap. You present it like it's a new engagement, because the engagement <em>is</em> new. The version of you who served them last year is not the version of you who will serve them this year. The price reflects that.</p>
+
+<blockquote>
+"CTOx is literally the accelerator — it gave me a four- to five-year head start over where I would have been without it."
+<cite>David Shake, CTO | Fusion Solutions Group, CTOx member</cite>
+</blockquote>
+
+<h4>The five-year client</h4>
+
+<p>The shape of a great fractional CTO practice, after 3 to 4 years, looks like this:</p>
+
+<ul>
+  <li>1–2 <strong>Engaged</strong> clients ($15–25K/month each) — your operating revenue</li>
+  <li>2–4 <strong>Advisor</strong> clients ($3–5K/month each) — your annuity</li>
+  <li>4–8 <strong>Workshop</strong> engagements per year ($10K each) — your pipeline filler and lead generator</li>
+  <li>1–2 <strong>equity-bearing</strong> seats — your asymmetric upside</li>
+</ul>
+
+<p>At the low end this is roughly $30K/month in cash, plus the workshops, plus the equity. At the high end it is $60K+/month. The advisor relationships, in particular, are sticky in a way that full-time roles never are; some of them go five and ten years, because nobody else can or will replace the institutional memory you have built up about that specific CEO and that specific company.</p>
+
+<p>That, in cash terms, is the prize. The freedom is the bonus.</p>
+
+<hr class="divider" />
+</section>
+
+<!-- ============================== CHAPTER 10 ============================== -->
+<section id="ch10">
+<h2 class="chapter">Chapter 10</h2>
+<h3 class="title">The Pro Mindset</h3>
+<p class="lede">What separates the practitioner from the dabbler, and why most aspiring fractional CTOs are still dabblers six months in.</p>
+
+<p>Steven Pressfield, in <em>The War of Art</em>, draws a distinction between the amateur and the pro. The amateur loves the work and waits for inspiration. The pro shows up on a Tuesday and does the work whether they feel like it or not. The pro is the person who has decided, at some level beneath conscious thought, that <em>this is what I do now</em>.</p>
+
+<p>Most aspiring fractional CTOs are amateurs. They get a flush of energy from reading a guide like this one. They sketch a positioning sentence. They set up a Bolster profile. Then, around Day 21, the energy fades, real life intervenes, two weeks slip by without a single attract action, and the project becomes a side project, and side projects in this business do not produce $30K/month practices.</p>
+
+<p>This final chapter is about the four mindset shifts that separate the people who actually build this from the people who keep meaning to.</p>
+
+<h4>Shift 1: From hours to outcomes</h4>
+
+<p>You have spent your career in a system that rewards hours. You showed up. You stayed late. The promotion came. The system trained you to equate visible effort with value, and you internalized it, and now it is wired into your nervous system.</p>
+
+<p>It is wrong, and it will cost you money for the rest of your career if you do not unwire it.</p>
+
+<p>The fractional CTO economy rewards <em>outcomes</em>, not <em>presence</em>. The CEO does not care if you spent 4 hours or 14 hours on her account this week. She cares whether the roadmap is shipping, whether the team is calmer, whether the vendor was cut, whether the audit is on track. If you ship those things in 4 hours, the price is the same as if you ship them in 14. The hour is irrelevant. <em>This is the central mental rewiring of the entire practice.</em></p>
+
+<p>You will know the rewiring is complete when, for the first time, you finish a client's deliverable in three hours instead of eight, and your first emotional response is satisfaction rather than guilt. That moment is the test. Most people fail it. Pass it.</p>
+
+<h4>Shift 2: From employee language to leader language</h4>
+
+<p>The Apr 9 CTOx Podcast episode — "How Your Language Signals Whether You Are a Leader or a Doer" — names something I have been failing to articulate for years. Your <em>altitude</em> in a meeting is set by the language you use, not by the title on your card. There are three rungs of language, and you can hear which rung someone is on within thirty seconds of them opening their mouth.</p>
+
+<table>
+<thead>
+<tr><th>Rung</th><th>Sounds like</th><th>Frame</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Individual contributor</strong></td><td>"I worked on…", "It took me 14 hours to…", "I'm blocked on…", "I need approval to…"</td><td>Tactical. Time-bound. Asks permission.</td></tr>
+<tr><td><strong>Manager</strong></td><td>"My team shipped…", "We're tracking against…", "I need a decision from you on…", "We're seeing a risk in…"</td><td>Operational. Owns the team. Brings information up.</td></tr>
+<tr><td><strong>Leader</strong></td><td>"The business needs…", "Here's the situation, here are the options, my recommendation is…", "The right move is…", "We should reconsider whether we're solving the right problem…"</td><td>Strategic. Owns the outcome. Brings recommendations.</td></tr>
+</tbody>
+</table>
+
+<p>Most senior technologists, on their first ten discovery calls and their first ten board readouts as fractional CTOs, default to the IC or manager rung. They report on hours and effort. They list what they did. They ask for permission. The CEO listens and quietly downgrades them. <em>Oh. This is a senior engineer who is calling himself a CTO.</em></p>
+
+<p>The framework to internalize is the <strong>SOR move</strong>: Situation, Options, Recommendation. Every time you bring a topic to the CEO, you frame it the same way.</p>
+
+<div class="script">
+<div class="turn"><span class="who">You:</span> Quick one before we wrap. <strong>Situation:</strong> our hosting bill jumped 22% last month because of the new analytics workload. <strong>Options:</strong> we can renegotiate with the vendor, we can shift the workload to a cheaper tier, or we can let it ride for the quarter. <strong>Recommendation:</strong> shift the workload — we save about $18K annualized, takes the team a week. Want me to kick it off?</div>
+</div>
+
+<p>That is leader language. It is short. It contains a recommendation. It puts the decision back where it belongs — with the CEO — but it makes the decision <em>cheap</em> for her, because you have done the analysis. CEOs love this. It is, frankly, why they hire fractional CTOs.</p>
+
+<h4>Shift 3: From asking permission to owning the outcome</h4>
+
+<p>The third shift is the hardest, because it requires you to actively unlearn a habit that has been rewarded for twenty years.</p>
+
+<p>In the employee model, you defer. The CEO decides. You execute. You ask permission for non-trivial calls. You loop the CEO in on the small stuff and the big stuff. This is appropriate behavior for an employee. It is dysfunctional behavior for a fractional CTO.</p>
+
+<p>The fractional CTO is being paid <em>specifically to remove decisions from the CEO's plate</em>. The CEO does not want to be the CTO. The CEO is bad at being the CTO. The CEO hired you so she could think about her own job. Every time you forward a technology decision to her instead of making it, you are returning value she paid you to absorb.</p>
+
+<p>The line: any decision the company can recover from in 30 days, you make. Any decision that costs more than $50K or takes more than 60 days to unwind, you bring to the CEO with an SOR. The rest, you ship and email her a one-line summary.</p>
+
+<p>You will, the first time you do this, feel a small panic. <em>What if I'm wrong? What if she's upset I didn't ask?</em> The opposite is true. She will, the first time you tell her you killed a vendor without asking, exhale with relief. She did not want to think about that vendor. That is why she is paying you $20K a month.</p>
+
+<h4>Shift 4: From "I'm exploring this" to "this is what I do"</h4>
+
+<p>This is the most personal shift, and I am going to say it directly, because nobody else will.</p>
+
+<p>You will, in your first 90 days, refer to your fractional CTO work in apologetic language. You will say things like <em>"I'm starting to do some fractional CTO work on the side"</em> or <em>"I'm exploring fractional CTO opportunities"</em> or <em>"I might transition to fractional work."</em> Every one of those sentences is a hedge, and every hedge tells the listener — and worse, tells <em>you</em> — that you are not sure this is real.</p>
+
+<p>People do not hire people who are not sure.</p>
+
+<p>The mechanical fix: starting today, when anyone asks, you answer with one sentence in present tense, no hedge.</p>
+
+<div class="callout">
+<span class="label">Say This Instead</span>
+Old: "I'm exploring becoming a fractional CTO." <br/>
+New: <strong>"I'm a fractional CTO. I help [WHO] do [WHAT] because [WHY me]."</strong>
+</div>
+
+<p>You will feel like a fraud the first six times you say it. You are not a fraud. You are a senior technologist with twenty years of experience, who has decided to deploy that experience across multiple companies instead of one. The sentence is true. Your discomfort with the sentence is the last residue of the employee mindset. It will fade. Say it anyway, before it fades, and the saying of it will accelerate the fading.</p>
+
+<p class="pull">"I've found my destiny. Being a fCTO finally feels like the right fit. The freedom to live fully. The clarity on where I bring value. It all makes sense now."</p>
+<p class="end">— Amit Moravchick, CTOx member testimonial</p>
+
+<h4>The 90-day commitment</h4>
+
+<p>One last thing, and then I'll let you go.</p>
+
+<p>The single biggest predictor of whether someone successfully builds a fractional CTO practice is not their technical depth, not their network, not their resume. It is whether they made a specific, time-bound, written commitment at the beginning, and whether they showed up to the work for the full duration of the commitment even on the weeks they didn't feel like it.</p>
+
+<p>The CTOx 90-Day Blueprint exists because 90 days is roughly the minimum honest duration for this. You cannot build a fractional CTO practice in 30 days. You probably can build the foundations in 90 — the wedge, the menu, the attract engine, the first 1–3 discovery calls, ideally the first signed engagement. The 90 days are not a deadline. They are a floor.</p>
+
+<p>The commitment, in five lines:</p>
+
+<ul>
+  <li>I am committing 5 hours a week, every week, for 13 weeks.</li>
+  <li>I will complete every starred item on the <a href="index.html">90-Day Blueprint</a>.</li>
+  <li>I will publish at least 20 pieces of public content (LinkedIn posts count) in the 13 weeks.</li>
+  <li>I will run at least 5 real discovery calls before Day 90.</li>
+  <li>I will not quit before Day 90 no matter how it's going on Day 45.</li>
+</ul>
+
+<p>Write the commitment down. Send it to one trusted other — a friend, a former colleague, your spouse — and ask them to check on you at Day 30, Day 60, and Day 90. The accountability is the entire mechanism. Without an external observer, you will negotiate with yourself. With one, you will not.</p>
+
+<p>That's it. That's the playbook.</p>
+
+<div class="callout">
+<span class="label">The Final Move</span>
+Go back to the <a href="index.html">90-Day Blueprint</a>. Open Day 1. Check off the first box. The first move is always the smallest one. The smallest move is the one you can make right now.
+</div>
+
+<hr class="divider" />
+</section>
+
+<!-- ============================== APPENDIX ============================== -->
+<section id="appendix">
+<h2 class="chapter">Appendix</h2>
+<h3 class="title">The Reference Shelf</h3>
+<p class="lede">Templates, scripts, and links you will use, in this order, over the next 90 days.</p>
+
+<h4>A. The reusable proposal template</h4>
+<pre><code>PROPOSAL — [Client Name]
+Prepared by [Your Name] · [Date] · Page 1 of 1
+
+THE SITUATION
+[3–4 sentences, mirroring her language back. The single most
+important paragraph in the document. If she does not read past
+this paragraph, you have already lost the deal.]
+
+THE RECOMMENDED ENGAGEMENT
+[Workshop / Engaged / Advisor]. [One sentence describing what it is.]
+
+WHAT YOU'LL GET
+• [Concrete deliverable 1, with date]
+• [Concrete deliverable 2, with date]
+• [Concrete deliverable 3, with date]
+• [Concrete deliverable 4, with date]
+• Weekly 30-min CEO sync; monthly board-grade ROI scorecard.
+
+INVESTMENT
+$[X] / month, billed monthly, net-15. Initial term: 6 months,
+auto-renewing in 3-month increments thereafter. 30-day mutual notice.
+
+TIMELINE
+Kickoff: [Date]. First major deliverable: [Date]. End of initial term: [Date].
+
+ABOUT ME
+[Two sentences. Most recent / most relevant credibility marker.
+Then your one-line positioning. Link to your bio.]
+
+To accept, reply to this email with "yes" or DocuSign attached.
+</code></pre>
+
+<h4>B. The discovery call script (45 minutes)</h4>
+<pre><code>0:00 — 0:05  Warm intro. Set the frame.
+0:05 — 0:15  "Tell me about your business, where you are, where
+              you want to be in 18 months, what's in the way."
+0:15 — 0:25  "What does your tech setup look like today? Who
+              owns it? What keeps you up at night about it?"
+0:25 — 0:35  "What made now the right time to have this
+              conversation? What changed in the last 30 days?"
+0:35 — 0:42  Your move. SOR. "Based on what you've described,
+              what I'd typically do in this situation is..."
+0:42 — 0:45  Specific next step with a date. "I'll send a one-page
+              proposal by Friday. Let's regroup Tuesday at 2."
+</code></pre>
+
+<h4>C. The Risk Register (Day 10 artifact)</h4>
+<pre><code>RISK REGISTER — [Client Name] — [Date]
+
+CATEGORY          SEVERITY    RISK                      RECOMMENDED ACTION
+Key person        🔴 Red      Backend wholly owned     Document. Pair second
+                              by one engineer.         engineer in 30 days.
+Security          🟡 Yellow   No MFA on AWS root.      Enable this week.
+Vendor            🟢 Green    Top 10 vendors known.    Quarterly review.
+Compliance        🔴 Red      SOC 2 committed by Q4;   Engage auditor week 3.
+                              no audit work begun.
+Architectural     🟡 Yellow   Deploy pipeline brittle. Quick win — Phase 2.
+Financial         🔴 Red      Cloud spend 24% of rev.  Vendor renegotiation
+                                                       in Phase 2.
+Hiring            🟡 Yellow   Director of Eng open     Re-spec the JD.
+                              for 7 months.
+Roadmap           🟢 Green    Public roadmap realistic. Track quarterly.
+</code></pre>
+
+<h4>D. The Quarterly ROI Scorecard (every quarter, every client)</h4>
+<pre><code>ROI SCORECARD — Q[#] [Year] — [Client Name]
+
+OUTCOMES SHIPPED
+1. [Named, dated outcome]
+2. [Named, dated outcome]
+3. [Named, dated outcome]
+
+KPI TRENDS (vs. prior quarter)
+• Velocity:          ▲ 18%
+• Deploy frequency:  ▲ 2.4x
+• Change-fail rate:  ▼ from 14% to 6%
+• Cost / active user: ▼ from $0.42 to $0.31
+• Security incidents: 0 (flat, no escalations)
+
+DOLLARS THIS QUARTER
+Money saved:      $[X]   (vendor consolidation, cloud optimization)
+Money earned:     $[X]   (shipped feature driving ARR)
+Money de-risked:  $[X]   (compliance gap closed before customer audit)
+Total impact:     $[X]
+Cost of engagement this quarter: $[Y]
+Ratio: [X/Y]x
+
+RISKS ON THE HORIZON
+1. [Risk + recommended next-quarter action]
+2. [Risk + recommended next-quarter action]
+3. [Risk + recommended next-quarter action]
+</code></pre>
+
+<h4>E. The week one operating cadence</h4>
+<table>
+<thead><tr><th>Day</th><th>Activity</th></tr></thead>
+<tbody>
+<tr><td>Mon</td><td>Monday morning: review last week's work, write 1-page weekly note to each client. Block 2 hours for attract work.</td></tr>
+<tr><td>Tue</td><td>Client #1 deep work. CEO sync (30 min).</td></tr>
+<tr><td>Wed</td><td>Client #2 deep work. CEO sync (30 min).</td></tr>
+<tr><td>Thu</td><td>Discovery calls / sales (block 3 slots). Network reconnects.</td></tr>
+<tr><td>Fri</td><td>Writing: LinkedIn posts, content. Admin: invoicing, scheduling, proposal follow-ups.</td></tr>
+<tr><td>Sat/Sun</td><td>Off. The whole point of this is the off.</td></tr>
+</tbody>
+</table>
+
+<h4>F. The Pricing Cheat Sheet</h4>
+<table>
+<thead><tr><th>Tier</th><th>Floor</th><th>Mid</th><th>Ceiling</th></tr></thead>
+<tbody>
+<tr><td>Half-day workshop (single deliverable)</td><td>$5,000</td><td>$8,500</td><td>$15,000</td></tr>
+<tr><td>2-day intensive (audit + roadmap)</td><td>$10,000</td><td>$15,000</td><td>$25,000</td></tr>
+<tr><td>Advisor retainer (4–8 hrs/mo)</td><td>$3,000</td><td>$4,000</td><td>$5,000</td></tr>
+<tr><td>Engaged retainer (1 day/wk)</td><td>$8,000</td><td>$12,000</td><td>$15,000</td></tr>
+<tr><td>Engaged retainer (2 days/wk)</td><td>$15,000</td><td>$20,000</td><td>$25,000</td></tr>
+<tr><td>Engaged retainer (3 days/wk)</td><td>$22,000</td><td>$28,000</td><td>$35,000</td></tr>
+<tr><td>Equity (asymmetric layer on top of cash)</td><td>0.25%</td><td>0.5%</td><td>1.0%</td></tr>
+</tbody>
+</table>
+<p style="color:var(--muted);font-size:13.5px"><em>Floor numbers assume year 1, no testimonials yet. Mid numbers assume year 2, 3+ named references. Ceiling numbers assume year 3+, a published track record, and a niche the buyer recognizes. If you are pricing at the floor in year 3, the problem is your positioning, not the market.</em></p>
+
+<h4>G. The seven re-engagement message templates</h4>
+<pre><code>1. THE NO-AGENDA RECONNECT (default)
+"[Name] — was thinking about you the other day. Saw [signal].
+Been a minute. Would love to catch up sometime in the next
+few weeks if you're up for it. No agenda."
+
+2. THE CONGRATS (post-promotion, post-funding, post-job-change)
+"[Name] — saw the news about [thing]. Congrats — well-earned.
+I'd love to hear what you're up to over a coffee or call
+sometime in the next few weeks if you have 30 min."
+
+3. THE CONFERENCE BUMP
+"[Name] — I'll be at [event] [date]. If you're going too,
+would be great to grab 30 min. Either way, would love to
+catch up sometime soon."
+
+4. THE FORWARDED ARTICLE
+"[Name] — saw this and thought of you given [shared context].
+[link]. Curious what you think. Also: been a minute. Catch up
+sometime?"
+
+5. THE INTRO REQUEST (only after you've reconnected at least once)
+"[Name] — quick one. I'm now doing [your positioning sentence].
+If anyone in your world fits that profile, would love an intro.
+No pressure if not."
+
+6. THE BIRTHDAY/HOLIDAY EXCUSE
+"[Name] — happy [holiday]. Hope the family is well. Realized
+it's been ages — let's actually catch up in [month]. I'll send
+a calendar invite next week unless you'd rather pick a time."
+
+7. THE DIRECT (if you have a specific deal in mind)
+"[Name] — I have a fast question I think only you can answer.
+Got 15 min this week?"
+</code></pre>
+
+<h4>H. The reading list, prioritized</h4>
+<table>
+<thead><tr><th>Order</th><th>Source</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><a href="https://go.ctox.com/join/1/learn">CTOx Free 90-Day Blueprint training</a></td><td>The template arc you're mimicking.</td></tr>
+<tr><td>2</td><td><a href="https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/">patio11 — "Don't Call Yourself a Programmer"</a></td><td>The canonical mindset essay.</td></tr>
+<tr><td>3</td><td><a href="https://jonathanstark.com/hbin">Jonathan Stark — "Hourly Billing Is Nuts"</a></td><td>The pricing rewiring.</td></tr>
+<tr><td>4</td><td><a href="https://lethain.com">Will Larson — lethain.com</a></td><td>How to articulate technical leadership in business terms.</td></tr>
+<tr><td>5</td><td><a href="https://podcasts.apple.com/us/podcast/the-ctox-podcast/id1814365787">The CTOx Podcast — every episode</a></td><td>Distillation of hundreds of fractional CTO engagements into 49 short episodes.</td></tr>
+<tr><td>6</td><td><a href="https://growth.eladgil.com">Elad Gil — High Growth Handbook</a></td><td>The reference for the scale-stage context your clients live in.</td></tr>
+<tr><td>7</td><td><a href="https://review.firstround.com">First Round Review</a></td><td>The voice and depth of writing to model your own on.</td></tr>
+<tr><td>8</td><td><a href="https://www.bolster.com">Bolster — read 20 fractional CTO profiles</a></td><td>Reverse-engineer the positioning that's working in the market right now.</td></tr>
+</tbody>
+</table>
+
+<h4>I. The community: where to find your peers</h4>
+<ul>
+  <li><a href="https://ctox.com">CTOx Accelerator</a> — the paid program this guide is a free companion to. Worth it if you can afford it and you want to compress the timeline from 12 months to 4.</li>
+  <li><a href="https://thectoclub.com">The CTO Club</a> — free peer community, rate data, role guides.</li>
+  <li><a href="https://7ctos.com">7CTOs</a> — peer groups, especially strong on financial acumen.</li>
+  <li><a href="https://sfelc.com">Engineering Leadership Community (ELC)</a> — peer and podcast.</li>
+  <li><a href="https://www.gofractional.com">Go Fractional</a> — marketplace and community.</li>
+</ul>
+
+</section>
+
+<!-- ============================== SOURCES ============================== -->
+<div class="sources" style="margin-top:60px">
+<h4>Sources and influences</h4>
+<p>This playbook is a synthesis. The frameworks and language are drawn directly from the work of the people below, all of whom are worth your time at their original source.</p>
+<ul>
+  <li><strong>Lior Weinstein</strong> and the team at <a href="https://ctox.com">CTOx</a> — the Four Freedoms, the Co-Pilot Principle, the Functional Technology™ Framework (Derisk / Unclog / Scale), the Engage / Advisor / Workshop offer structure, the attract → convert → serve arc. The <a href="https://ctox.com/fractional-cto-101/">Fractional CTO 101 manifesto</a> and the <a href="https://podcasts.apple.com/us/podcast/the-ctox-podcast/id1814365787">CTOx Podcast</a> (all 49 episodes) are the spine of this document.</li>
+  <li><strong>The Q&amp;A with Lior on marketing</strong> (<a href="https://vimeo.com/1090507940?share=copy">Vimeo</a>) — the marketing-as-reps framing, the "talk about the buyer's problem" rule, the focus on conversations over impressions.</li>
+  <li><strong>The 250+ CTOx members</strong> whose <a href="https://ctox.com/testimonials/">testimonials</a> shaped the realistic descriptions of what the first year actually looks and feels like — particularly Paul McRae, Chris Marrs, Gav M., David Shake, Sanjay Akut, Amit Moravchick, Jon Benedict, Yeomy Waller, and Jacob Silberstein, who are quoted directly.</li>
+  <li><strong>Patrick McKenzie</strong> (<a href="https://www.kalzumeus.com">kalzumeus.com</a>) — the canonical positioning essay and the consulting playbook beneath it.</li>
+  <li><strong>Jonathan Stark</strong> (<a href="https://jonathanstark.com">jonathanstark.com</a>) — the entire framework for value-based pricing, "Hourly Billing Is Nuts," and the <em>Ditch Hourly</em> podcast.</li>
+  <li><strong>Will Larson</strong> (<a href="https://lethain.com">lethain.com</a> and <a href="https://staffeng.com">staffeng.com</a>) — how to articulate technical leadership archetypes in business terms.</li>
+  <li><strong>Rob Fitzpatrick</strong> — <em>The Mom Test</em>, the basis for the discovery call script.</li>
+  <li><strong>Elad Gil</strong> — <em>High Growth Handbook</em>, the operational context your clients live in.</li>
+  <li><strong>Steven Pressfield</strong> — <em>The War of Art</em>, the framing for the pro / amateur distinction in Chapter 10.</li>
+  <li><strong>The voice and structure</strong> are an homage to <a href="https://randsinrepose.com">Rands in Repose</a> (Michael Lopp) — long-form, scene-opening, three-bucket-frameworked operator essays — because no one writes about technical leadership better and the form he developed is the right form for this material.</li>
+</ul>
+</div>
+
+<footer class="foot">
+  <p>The Fractional CTO Playbook — a long-form companion to <a href="index.html">the 90-Day Blueprint</a>. Built for the senior technologist who has finally decided to stop trading time for status. No tracking, no sign-up, no paywall. If it helped, forward it to someone who needs it.</p>
+</footer>
+
+</div>
+</body>
+</html>
